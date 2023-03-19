@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import classes from './MainNavigation.module.css'
 function MainNavigation() {
+  //맨 위에 고정적으로 달아놓는 부분
   return (
     <>
       <header className={classes.header}>
         <NavLink to="" className={classes.title}>
-          Water Shopping Mall
+          Water Community
         </NavLink>
         <nav>
           <ul className={classes.list}>
@@ -31,16 +32,6 @@ function MainNavigation() {
             </li>
             <li>
               <NavLink
-                to="/water-tool"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                물먹는 도구
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/event-issue"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
@@ -57,16 +48,6 @@ function MainNavigation() {
                 }
               >
                 로그인
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/basket"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                장바구니
               </NavLink>
             </li>
           </ul>

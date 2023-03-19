@@ -26,4 +26,6 @@
 .title {
   font-size: 30px;
   background-color: white;
+  text-decoration: none;
+  color: var(--color-primary-400);
 }

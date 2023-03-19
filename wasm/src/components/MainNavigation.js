@@ -4,13 +4,11 @@ function MainNavigation() {
   return (
     <>
       <header className={classes.header}>
+        <NavLink to="" className={classes.title}>
+          Water Shopping Mall
+        </NavLink>
         <nav>
           <ul className={classes.list}>
-            <li>
-              <NavLink to="" className={classes.title}>
-                Water Shopping Mall
-              </NavLink>
-            </li>
             <li>
               <NavLink
                 to="/korean"

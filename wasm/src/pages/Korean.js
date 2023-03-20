@@ -18,8 +18,8 @@ async function loadKorean() {
   if (!response.ok) {
   } else {
     const resData = await response.json()
-    console.log(resData[0].posts)
-    return resData[0].posts
+    console.log(resData)
+    return resData
   }
 }
 

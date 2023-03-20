@@ -1,7 +1,7 @@
 {
   "korean": [
     {
-      "id": 1,
+      "select": "korean",
       "title": "첫번째 게시글",
       "writer": "ZetBe",
       "date": "2023-3-19",
@@ -11,7 +11,6 @@
       "hates": 0,
       "comments": [
         {
-          "id": 1,
           "writer": "Seo",
           "contents": "넵 알겠습니다.",
           "date": "2023-3-19",
@@ -23,7 +22,7 @@
   ],
   "foreign": [
     {
-      "id": 1,
+      "select": "foreign",
       "title": "첫번째 게시글",
       "writer": "ZetBe",
       "date": "2023-3-19",
@@ -33,26 +32,12 @@
       "hates": 0,
       "comments": [
         {
-          "id": 1,
           "wirter": "Seo",
           "contents": "넵 알겠습니다.",
           "date": "2023-3-19",
           "likes": 0,
           "hates": 0
         }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "ㅁㄴㅇ",
-      "writer": "seo",
-      "date": "2023-3-20",
-      "contents": "ㅁㄴㅇ",
-      "views": 0,
-      "likes": 0,
-      "hates": 0,
-      "comments": [
-        {}
       ]
     }
   ],

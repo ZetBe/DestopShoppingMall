@@ -21,7 +21,7 @@ async function loadForeignDetail(id) {
   } else {
     const resData = await response.json()
     console.log(resData[0].posts[id - 1])
-    return resData[0].posts[id - 1]
+    return resData[id - 1]
   }
 }
 

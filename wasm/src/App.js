@@ -10,10 +10,12 @@ import KoreanDetailPage, {
 } from './pages/KoreanDetail'
 import CommunityLayout from './pages/CommunityLayout'
 import NewPostPage from './pages/NewPost'
-import { action as newAction } from './components/PostForm'
+import { action as manipulatePostAction } from './components/PostForm'
 import ForeignDetailPage, {
   loader as foreignDetailLoader,
 } from './pages/ForeignDetail'
+import ForeignEditPostPage from './pages/ForeignEditPost'
+import KoreanEditPostPage from './pages/KoreanEditPost'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -34,7 +36,14 @@ const router = createBrowserRouter([
             path: ':id',
             id: 'korean-detail',
             loader: koreanDetailLoader,
-            children: [{ index: true, element: <KoreanDetailPage /> }],
+            children: [
+              { index: true, element: <KoreanDetailPage /> },
+              {
+                path: 'edit',
+                element: <KoreanEditPostPage />,
+                action: manipulatePostAction,
+              },
+            ],
           },
         ],
       },
@@ -58,11 +67,16 @@ const router = createBrowserRouter([
                 index: true,
                 element: <ForeignDetailPage />,
               },
+              {
+                path: 'edit',
+                element: <ForeignEditPostPage />,
+                action: manipulatePostAction,
+              },
             ],
           },
         ],
       },
-      { path: 'new', element: <NewPostPage />, action: newAction },
+      { path: 'new', element: <NewPostPage />, action: manipulatePostAction },
       { path: 'event-issue', element: <EventIssuePage /> },
       { path: 'login', element: <LoginPage /> },
     ],

@@ -77,7 +77,7 @@ export async function action({ request, params }) {
 
   if (eventData.select === '국산 물') {
     eventData = {
-      id: 2,
+      id: data.get('id'),
       title: data.get('title'),
       writer: 'seo',
       date: year + '-' + month + '-' + date,

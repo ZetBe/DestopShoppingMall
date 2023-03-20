@@ -16,13 +16,13 @@ function CommunityList({ posts }) {
           </tr>
         </thead>
         <tbody>
-          {posts.map((post) => (
-            <tr key={post.id}>
-              <td>{post.id}</td>
+          {posts.map((post, index) => (
+            <tr key={index}>
+              <td>{index}</td>
               <td>{post.writer}</td>
 
               <td>
-                <NavLink to={`${post.id}`}>{post.title}</NavLink>
+                <NavLink to={`${index + 1}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
               <td>{post.views}</td>

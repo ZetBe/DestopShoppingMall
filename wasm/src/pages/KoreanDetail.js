@@ -20,8 +20,8 @@ async function loadKoreanDetail(id) {
   if (!response.ok) {
   } else {
     const resData = await response.json()
-    console.log(resData[0].posts[id - 1])
-    return resData[0].posts[id - 1]
+    console.log(resData)
+    return resData[id - 1]
   }
 }
 

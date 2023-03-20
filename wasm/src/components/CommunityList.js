@@ -17,8 +17,8 @@ function CommunityList({ posts }) {
         </thead>
         <tbody>
           {posts.map((post, index) => (
-            <tr key={index}>
-              <td>{index}</td>
+            <tr key={post.id}>
+              <td>{post.id}</td>
               <td>{post.writer}</td>
 
               <td>

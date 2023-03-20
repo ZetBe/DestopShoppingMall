@@ -1,9 +1,9 @@
 import { Suspense } from 'react'
 import { Await, defer, useRouteLoaderData } from 'react-router-dom'
-import CommunityList from '../components/CommunityList'
+import CommunityList from '../../components/CommunityList'
 
-function KoreanPage() {
-  const { posts } = useRouteLoaderData('korean')
+function ForeignPage() {
+  const { posts } = useRouteLoaderData('foreign')
   return (
     <Suspense>
       <Await resolve={posts}>
@@ -13,19 +13,19 @@ function KoreanPage() {
   )
 }
 
-async function loadKorean() {
-  const response = await fetch('http://localhost:3000/korean/')
+async function loadForeign() {
+  const response = await fetch('http://localhost:3000/foreign')
   if (!response.ok) {
   } else {
     const resData = await response.json()
-    console.log(resData)
     return resData
   }
 }
 
-export default KoreanPage
+export default ForeignPage
+
 export function loader() {
   return defer({
-    posts: loadKorean(),
+    posts: loadForeign(),
   })
 }

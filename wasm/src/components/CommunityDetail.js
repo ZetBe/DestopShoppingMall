@@ -1,12 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { idActions } from '../store/id-slice'
-function CommunityDetail({ post }) {
+import axios from 'axios'
+function CommunityDetail({ post, params }) {
   const { comments } = post
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   const likes = state.id.likes
   const hates = state.id.hates
+
   const likeHandler = (event) => {
     event.preventDefault()
     dispatch(idActions.addLike(likes))
@@ -15,7 +19,18 @@ function CommunityDetail({ post }) {
     event.preventDefault()
     dispatch(idActions.addHate(hates))
   }
-  console.log(likes)
+
+  const deleteHandler = async () => {
+    const proceed = window.confirm('진짜 지울거임?')
+    const id = params.id
+    const select = post.select
+
+    if (proceed) {
+      await axios.delete(`http://localhost:3000/${select}/${id}`)
+      navigate('/')
+    }
+  }
+
   return (
     <>
       <article>
@@ -24,8 +39,8 @@ function CommunityDetail({ post }) {
         <p>{post.contents}</p>
         <div>{likes}</div>
         <div>{hates}</div>
-        <button>편집</button>
       </article>
+      <button onClick={deleteHandler}>삭제</button>
       <hr></hr>
       <ul>
         {comments.map((comment, index) => (

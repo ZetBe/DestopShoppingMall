@@ -1,13 +1,14 @@
 import { Suspense } from 'react'
-import { Await, defer, useRouteLoaderData } from 'react-router-dom'
-import CommunityDetail from '../components/CommunityDetail'
+import { Await, defer, useParams, useRouteLoaderData } from 'react-router-dom'
+import CommunityDetail from '../../components/CommunityDetail'
 
 function ForeignDetailPage() {
   const { post } = useRouteLoaderData('foreign-detail')
+  const params = useParams()
   return (
     <Suspense>
       <Await resolve={post}>
-        {(loadPost) => <CommunityDetail post={loadPost} />}
+        {(loadPost) => <CommunityDetail post={loadPost} params={params} />}
       </Await>
     </Suspense>
   )
@@ -16,12 +17,11 @@ function ForeignDetailPage() {
 export default ForeignDetailPage
 
 async function loadForeignDetail(id) {
-  const response = await fetch('http://localhost:3000/foreign')
+  const response = await fetch('http://localhost:3000/foreign/' + id)
   if (!response.ok) {
   } else {
     const resData = await response.json()
-    console.log(resData[0].posts[id - 1])
-    return resData[id - 1]
+    return resData
   }
 }
 

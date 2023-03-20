@@ -31,23 +31,11 @@ function PostForm({ method, post }) {
       </p>
       <p>
         <label htmlFor="title">제목</label>
-        <input
-          id="title"
-          type="text"
-          name="title"
-          required
-          defaultValue={post ? post.title : ''}
-        />
+        <input id="title" type="text" name="title" required />
       </p>
       <p>
         <label htmlFor="contents">내용</label>
-        <input
-          id="contents"
-          name="contents"
-          rows="5"
-          required
-          defaultValue={post ? post.contents : ''}
-        />
+        <input id="contents" name="contents" rows="5" required />
       </p>
       <div>
         <button disabled={isSubmitting}>제출</button>
@@ -76,21 +64,13 @@ export async function action({ request, params }) {
   let url = 'http://localhost:3000/'
 
   if (eventData.select === '국산 물') {
-    eventData = {
-      id: data.get('id'),
-      title: data.get('title'),
-      writer: 'seo',
-      date: year + '-' + month + '-' + date,
-      contents: data.get('contents'),
-      views: 0,
-      likes: 0,
-      hates: 0,
-      comments: [{}],
-    }
     url = 'http://localhost:3000/korean'
-  } else if (eventData.select === '외국 물') {
+    const list = await fetch(url)
+    const index = await list.json()
+    console.log(index[index.length - 1].id + 1)
     eventData = {
-      id: 2,
+      id: index[index.length - 1].id + 1,
+      select: 'korean',
       title: data.get('title'),
       writer: 'seo',
       date: year + '-' + month + '-' + date,
@@ -100,13 +80,28 @@ export async function action({ request, params }) {
       hates: 0,
       comments: [{}],
     }
+  } else if (eventData.select === '외국 물') {
     url = 'http://localhost:3000/foreign'
+    const list = await fetch(url)
+    const index = await list.json()
+    eventData = {
+      id: index[index.length - 1].id + 1,
+      select: 'foreign',
+      title: data.get('title'),
+      writer: 'seo',
+      date: year + '-' + month + '-' + date,
+      contents: data.get('contents'),
+      views: 0,
+      likes: 0,
+      hates: 0,
+      comments: [{}],
+    }
   }
-
+  console.log(eventData)
   const response = await fetch(url, {
     method: method,
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(eventData),
   })

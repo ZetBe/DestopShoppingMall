@@ -25,8 +25,6 @@ function CommunityList({ posts }) {
                 <NavLink to={`${post.id}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
-              <td>{post.views}</td>
-              <td>{post.likes}</td>
             </tr>
           ))}
         </tbody>

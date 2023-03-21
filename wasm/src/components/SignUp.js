@@ -1,21 +1,77 @@
+import { useState } from 'react'
 import { Form, json, redirect, NavLink } from 'react-router-dom'
 
-function SignUp() {
+function SignUp({ accounts }) {
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
+  const [redId, setRedId] = useState(false)
+  const [redPassword, setRedPassword] = useState(false)
+  const [username, setUsername] = useState('')
+
+  const usernameHandler = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const idHandler = (e) => {
+    setId(e.target.value)
+    if (id.trim().length < 4) {
+      setRedId(true)
+    } else {
+      setRedId(false)
+    }
+  }
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value)
+    if (password.trim().length < 7) {
+      setRedPassword(true)
+    } else {
+      setRedPassword(false)
+    }
+  }
+
   return (
     <Form method="POST">
-      <p>
+      <div>
         <label htmlFor="name">이름을 입력해주세요</label>
-        <input id="username" type="text" name="username" required></input>
-      </p>
-      <p>
+        <input
+          id="username"
+          type="text"
+          name="username"
+          value={username}
+          onChange={usernameHandler}
+          required
+        ></input>
+      </div>
+      <div>
         <label htmlFor="id">아이디를 등록해주세요</label>
-        <input id="id" type="text" name="id" required></input>
-      </p>
-      <p>
+        <input
+          id="id"
+          type="text"
+          name="id"
+          value={id}
+          onChange={idHandler}
+          required
+        ></input>
+        {redId && <p>아이디는 4자이상 입력해주세요</p>}
+      </div>
+      <div>
         <label htmlFor="password">비밀번호를 등록해주세요</label>
-        <input id="password" type="password" name="password" required></input>
-      </p>
-      <button>가입</button>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          onChange={passwordHandler}
+          value={password}
+          required
+        ></input>
+        {redPassword && <p>비밀번호는 8자이상 입력해주세요</p>}
+      </div>
+      {!redId &&
+        !redPassword &&
+        username !== '' &&
+        id !== '' &&
+        password !== '' && <button>가입</button>}
       <NavLink to="/login">
         <button>취소</button>
       </NavLink>
@@ -28,11 +84,18 @@ export default SignUp
 export async function action({ request, params }) {
   const data = await request.formData()
   const method = request.method
-
   const eventData = {
     id: data.get('id'),
     password: data.get('password'),
     username: data.get('username'),
+  }
+  const accounts = await fetch('http://localhost:3000/login')
+  const account = await accounts.json()
+  for (let i = 0; i < account.length; i++) {
+    if (account[i].username === eventData.username) {
+      window.alert('같은 이름을 가진 유저가 있어 다시 입력해주세요')
+      return redirect('/login')
+    }
   }
 
   const response = await fetch('http://localhost:3000/login', {

@@ -6,10 +6,7 @@
       "title": "첫번째 게시글",
       "writer": "ZetBe",
       "date": "2023-3-19",
-      "contents": "여기서는 물 이야기만 하시길 바랍니다.",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "여기서는 물 이야기만 하시길 바랍니다."
     },
     {
       "id": 3,
@@ -17,10 +14,7 @@
       "title": "123",
       "writer": "seo",
       "date": "2023-3-20",
-      "contents": "23",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "23"
     },
     {
       "id": 4,
@@ -28,10 +22,7 @@
       "title": "삼다수가 맛있음",
       "writer": "seo",
       "date": "2023-3-20",
-      "contents": "ㄹㅇ",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "ㄹㅇ"
     },
     {
       "id": 5,
@@ -39,10 +30,7 @@
       "title": "ㅁㄴㅇㄹ",
       "writer": "seo",
       "date": "2023-3-20",
-      "contents": "ㅁㄴㅇㄹ",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "ㅁㄴㅇㄹ"
     },
     {
       "id": 6,
@@ -50,10 +38,7 @@
       "title": "asdfa",
       "writer": "seo",
       "date": "2023-3-21",
-      "contents": "sdf",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "sdf"
     }
   ],
   "korean-comments": [
@@ -62,9 +47,21 @@
       "commentId": 1,
       "wirter": "Seo",
       "contents": "넵 알겠습니다.",
-      "date": "2023-3-19",
-      "likes": 0,
-      "hates": 0
+      "date": "2023-3-19"
+    },
+    {
+      "id": 2,
+      "commentId": 1,
+      "date": "2023-3-21",
+      "writer": "seo",
+      "contents": "ㅁㄴㅇ"
+    },
+    {
+      "id": 3,
+      "commentId": 3,
+      "date": "2023-3-21",
+      "writer": "seo",
+      "contents": "어허"
     }
   ],
   "foreign": [
@@ -74,10 +71,7 @@
       "title": "첫번째 게시글",
       "writer": "ZetBe",
       "date": "2023-3-19",
-      "contents": "여기서는 물 이야기만 하시길 바랍니다.",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "여기서는 물 이야기만 하시길 바랍니다."
     },
     {
       "id": 3,
@@ -85,10 +79,7 @@
       "title": "에비앙이 맛있지",
       "writer": "seo",
       "date": "2023-3-20",
-      "contents": "인정?",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "인정?"
     },
     {
       "id": 4,
@@ -96,10 +87,7 @@
       "title": "ㅁㄴㅇ",
       "writer": "seo",
       "date": "2023-3-20",
-      "contents": "ㅁㄴㅇ",
-      "views": 0,
-      "likes": 0,
-      "hates": 0
+      "contents": "ㅁㄴㅇ"
     }
   ],
   "foreign-comments": [
@@ -108,27 +96,21 @@
       "commentId": 1,
       "wirter": "Seo",
       "contents": "넵 알겠습니다.",
-      "date": "2023-3-19",
-      "likes": 0,
-      "hates": 0
+      "date": "2023-3-19"
     },
     {
       "id": 2,
       "commentId": 1,
       "writer": "seo",
       "date": "2023-3-21",
-      "contents": "ㅁㄴㅇ",
-      "likes": 0,
-      "hates": 0
+      "contents": "ㅁㄴㅇ"
     },
     {
       "id": 3,
       "commentId": 1,
       "date": "2023-3-21",
       "writer": "seo",
-      "contents": "응 싫어",
-      "likes": 0,
-      "hates": 0
+      "contents": "응 싫어"
     }
   ],
   "event-issue": [
@@ -137,8 +119,7 @@
       "title": "반갑습니다.",
       "writer": "ZetBe",
       "date": "2023-3-19-19:21",
-      "contents": "여기 방문하신 기념으로 저의 사랑을 드리겠습니다.",
-      "views": 0
+      "contents": "여기 방문하신 기념으로 저의 사랑을 드리겠습니다."
     }
   ],
   "login": [
@@ -156,6 +137,21 @@
       "id": "asdfsad",
       "password": "fsadfasd",
       "username": "asdfsad"
+    },
+    {
+      "id": "asdfsddsasd",
+      "password": "asdsdfasd",
+      "username": "asdfadf"
+    },
+    {
+      "id": "ㅁㄴㅇㄹㅁㄴㅇㄹ",
+      "password": "asdfasdf",
+      "username": "ㅁㅇㄴㄹ"
+    },
+    {
+      "id": "asdfsadf",
+      "password": "sadfasdgdas",
+      "username": "ZetBe"
     }
   ]
 }

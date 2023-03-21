@@ -4,7 +4,7 @@ import HomePage from './pages/Home'
 import KoreanPage, { loader as koreanLoader } from './pages/korean/Korean'
 import ForeignPage, { loader as foreignLoader } from './pages/foreign/Foreign'
 import EventIssuePage from './pages/EventIssue'
-import LoginPage, { loader as loginLoader } from './pages/Login'
+import LoginPage, { loader as loginLoader } from './pages/login/Login'
 import KoreanDetailPage, {
   loader as koreanDetailLoader,
 } from './pages/korean/KoreanDetail'
@@ -15,7 +15,7 @@ import ForeignDetailPage, {
   loader as foreignDetailLoader,
 } from './pages/foreign/ForeignDetail'
 import { action as loginAction } from './components/SignUp'
-import RegisterPage from './pages/Register'
+import RegisterPage, { loader as registerLoader } from './pages/login/Register'
 import { action as commentAction } from './components/CommunityComments'
 const router = createBrowserRouter([
   {
@@ -37,7 +37,14 @@ const router = createBrowserRouter([
             path: ':id',
             id: 'korean-detail',
             loader: koreanDetailLoader,
-            children: [{ index: true, element: <KoreanDetailPage /> }],
+
+            children: [
+              {
+                index: true,
+                element: <KoreanDetailPage />,
+                action: commentAction,
+              },
+            ],
           },
         ],
       },
@@ -78,7 +85,12 @@ const router = createBrowserRouter([
             id: 'login',
             loader: loginLoader,
           },
-          { path: 'register', element: <RegisterPage />, action: loginAction },
+          {
+            path: 'register',
+            element: <RegisterPage />,
+            loader: registerLoader,
+            action: loginAction,
+          },
         ],
       },
     ],

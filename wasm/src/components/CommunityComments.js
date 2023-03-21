@@ -1,20 +1,6 @@
 import { Form, json, redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { idActions } from '../store/id-slice'
 
 function CommunityComments({ comments, params, select }) {
-  const dispatch = useDispatch()
-  const state = useSelector((state) => state)
-  const likes = state.id.likes
-  const hates = state.id.hates
-  const likeHandler = (event) => {
-    event.preventDefault()
-    dispatch(idActions.addLike(likes))
-  }
-  const hateHandler = (event) => {
-    event.preventDefault()
-    dispatch(idActions.addHate(hates))
-  }
   return (
     <>
       <Form method="POST">
@@ -37,12 +23,6 @@ function CommunityComments({ comments, params, select }) {
             </p>
             <p>{comment.contents}</p>
             {comment.date}
-            <div>
-              <button onClick={likeHandler}>좋아요</button>
-              {comment.likes}
-              <button onClick={hateHandler}>싫어요</button>
-              {comment.hates}
-            </div>
           </li>
         ))}
       </ul>
@@ -53,7 +33,6 @@ function CommunityComments({ comments, params, select }) {
 export default CommunityComments
 
 export async function action({ request, params }) {
-  console.log('asdf')
   let today = new Date()
   let year = today.getFullYear()
   let month = today.getMonth() + 1
@@ -62,12 +41,8 @@ export async function action({ request, params }) {
   const method = request.method
   const data = await request.formData()
 
-  let url = 'http://localhost:3000/korean-comments'
-
-  if (data.get('select') === 'foreign') {
-    url = 'http://localhost:3000/foreign-comments'
-  }
-
+  let url = `http://localhost:3000/${data.get('select')}-comments`
+  console.log()
   const list = await fetch(url)
   const index = await list.json()
 
@@ -77,11 +52,8 @@ export async function action({ request, params }) {
     date: year + '-' + month + '-' + date,
     writer: 'seo',
     contents: data.get('contents'),
-    likes: 0,
-    hates: 0,
   }
 
-  console.log(eventData)
   const response = await fetch(url, {
     method: method,
     headers: {
@@ -93,5 +65,5 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: 'Could not save event.' }, { status: 500 })
   }
-  return redirect(`/foreign/${eventData.commentId}`)
+  return redirect(`/${data.get('select')}/${eventData.commentId}`)
 }

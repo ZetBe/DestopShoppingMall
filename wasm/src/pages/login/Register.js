@@ -1,18 +1,19 @@
-import SignIn from '../components/SignIn'
-import { defer, Await, useRouteLoaderData } from 'react-router-dom'
+import SignUp from '../../components/SignUp'
+import { Await, useLoaderData, defer } from 'react-router-dom'
 import { Suspense } from 'react'
-function LoginPage() {
-  const { accounts } = useRouteLoaderData('login')
+function RegisterPage() {
+  const { accounts } = useLoaderData()
+  console.log(accounts)
   return (
     <Suspense>
       <Await resolve={accounts}>
-        {(loadAccounts) => <SignIn accounts={loadAccounts} />}
+        {(loadAccounts) => <SignUp accounts={loadAccounts} />}
       </Await>
     </Suspense>
   )
 }
 
-export default LoginPage
+export default RegisterPage
 
 async function loadLogin() {
   const response = await fetch('http://localhost:3000/login')

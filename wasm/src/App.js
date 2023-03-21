@@ -16,6 +16,7 @@ import ForeignDetailPage, {
 } from './pages/foreign/ForeignDetail'
 import { action as loginAction } from './components/SignUp'
 import RegisterPage from './pages/Register'
+import { action as commentAction } from './components/CommunityComments'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -55,10 +56,12 @@ const router = createBrowserRouter([
             path: ':id',
             id: 'foreign-detail',
             loader: foreignDetailLoader,
+
             children: [
               {
                 index: true,
                 element: <ForeignDetailPage />,
+                action: commentAction,
               },
             ],
           },

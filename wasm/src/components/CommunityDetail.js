@@ -4,13 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { idActions } from '../store/id-slice'
 import axios from 'axios'
 function CommunityDetail({ post, params }) {
-  const { comments } = post
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
   const likes = state.id.likes
   const hates = state.id.hates
-
   const likeHandler = (event) => {
     event.preventDefault()
     dispatch(idActions.addLike(likes))
@@ -19,7 +17,6 @@ function CommunityDetail({ post, params }) {
     event.preventDefault()
     dispatch(idActions.addHate(hates))
   }
-
   const deleteHandler = async () => {
     const proceed = window.confirm('진짜 지울거임?')
     const id = params.id
@@ -41,25 +38,13 @@ function CommunityDetail({ post, params }) {
         <div>{hates}</div>
       </article>
       <button onClick={deleteHandler}>삭제</button>
+      <div>
+        <button onClick={likeHandler}>좋아요</button>
+        {post.likes}
+        <button onClick={hateHandler}>싫어요</button>
+        {post.hates}
+      </div>
       <hr></hr>
-      <ul>
-        {comments.map((comment, index) => (
-          <li key={index}>
-            <p>
-              {index + 1}
-              {comment.writer}
-            </p>
-            <p>{comment.contents}</p>
-            {comment.date}
-            <div>
-              <button onClick={likeHandler}>좋아요</button>
-              {comment.likes}
-              <button onClick={hateHandler}>싫어요</button>
-              {comment.hates}
-            </div>
-          </li>
-        ))}
-      </ul>
     </>
   )
 }

@@ -54,7 +54,7 @@ export async function action({ request, params }) {
   let year = today.getFullYear()
   let month = today.getMonth() + 1
   let date = today.getDate()
-
+  console.log(params.id)
   const method = request.method
   const data = await request.formData()
   let eventData = {

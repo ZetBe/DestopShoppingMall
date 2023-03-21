@@ -22,7 +22,7 @@ function CommunityList({ posts }) {
               <td>{post.writer}</td>
 
               <td>
-                <NavLink to={`${index + 1}`}>{post.title}</NavLink>
+                <NavLink to={`${post.id}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
               <td>{post.views}</td>

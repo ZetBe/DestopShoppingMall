@@ -1,4 +1,4 @@
-import SignUp from '../../components/SignUp'
+import SignUp from '../../components/login/SignUp'
 import { Await, useLoaderData, defer } from 'react-router-dom'
 import { Suspense } from 'react'
 function RegisterPage() {

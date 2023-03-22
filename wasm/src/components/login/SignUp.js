@@ -94,7 +94,7 @@ export async function action({ request, params }) {
   for (let i = 0; i < account.length; i++) {
     if (account[i].username === eventData.username) {
       window.alert('같은 이름을 가진 유저가 있어 다시 입력해주세요')
-      return redirect('/login')
+      return redirect('/login/register')
     }
   }
 
@@ -109,6 +109,6 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: 'Could not save event.' }, { status: 500 })
   }
-  window.alert('입력하신 정보로 로그인 부탁드립니다.')
+  window.alert('입력하신 정보로 로그인해주시길 바랍니다.')
   return redirect('/login')
 }

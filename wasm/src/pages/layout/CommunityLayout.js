@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import CommunityNavigation from '../components/CommunityNavigation'
+import CommunityNavigation from '../../components/community/CommunityNavigation'
 function CommunityLayout() {
   return (
     <>

@@ -2,9 +2,8 @@ import { Suspense } from 'react'
 import { Await, defer, useParams, useRouteLoaderData } from 'react-router-dom'
 import CommunityDetail from '../../components/community/CommunityDetail'
 import CommunityComments from '../../components/community/CommunityComments'
-
-function KoreanDetailPage() {
-  const { post, comments } = useRouteLoaderData('korean-detail')
+function EventIssueDetailPage() {
+  const { post, comments } = useRouteLoaderData('event-detail')
   const params = useParams()
   return (
     <>
@@ -21,7 +20,7 @@ function KoreanDetailPage() {
             <CommunityComments
               comments={loadedComments}
               params={params}
-              select="korean"
+              select="event-issue"
             />
           )}
         </Await>
@@ -30,10 +29,10 @@ function KoreanDetailPage() {
   )
 }
 
-export default KoreanDetailPage
+export default EventIssueDetailPage
 
-async function loadKoreanDetail(id) {
-  const response = await fetch('http://localhost:3000/korean/' + id)
+async function loadEventDetail(id) {
+  const response = await fetch('http://localhost:3000/event-issue/' + id)
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -41,8 +40,8 @@ async function loadKoreanDetail(id) {
   }
 }
 
-async function loadKoreanComment(id) {
-  const response = await fetch('http://localhost:3000/korean-comments')
+async function loadEventComment(id) {
+  const response = await fetch('http://localhost:3000/event-issue-comments/')
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -60,7 +59,7 @@ async function loadKoreanComment(id) {
 export function loader({ request, params }) {
   const id = params.id
   return defer({
-    post: loadKoreanDetail(id),
-    comments: loadKoreanComment(id),
+    post: loadEventDetail(id),
+    comments: loadEventComment(id),
   })
 }

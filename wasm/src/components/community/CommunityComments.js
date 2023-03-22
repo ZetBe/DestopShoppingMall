@@ -1,19 +1,32 @@
+import { useSelector } from 'react-redux'
 import { Form, json, redirect } from 'react-router-dom'
 
 function CommunityComments({ comments, params, select }) {
+  const state = useSelector((state) => state.account)
+  console.log(comments)
   return (
     <>
-      <Form method="POST">
-        <input id="id" name="id" value={params.id} readOnly></input>
-        <input id="select" name="select" value={select} readOnly></input>
-        <p>
-          <label htmlFor="contents">내용</label>
-          <input id="contents" name="contents" rows="5" required />
-        </p>
-        <button>제출</button>
-      </Form>
-      <hr></hr>
-      {comments.length}
+      {state.login && (
+        <>
+          <Form method="POST">
+            <input id="id" name="id" value={params.id} readOnly></input>
+            <input id="select" name="select" value={select} readOnly></input>
+            <input
+              id="name"
+              name="name"
+              value={state.username}
+              readOnly
+            ></input>
+            <p>
+              <label htmlFor="contents">내용</label>
+              <input id="contents" name="contents" rows="5" required />
+            </p>
+            <button>제출</button>
+          </Form>
+          <hr></hr>
+        </>
+      )}
+      댓글 수: {comments.length}
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
@@ -33,6 +46,7 @@ function CommunityComments({ comments, params, select }) {
 export default CommunityComments
 
 export async function action({ request, params }) {
+  console.log('생존')
   let today = new Date()
   let year = today.getFullYear()
   let month = today.getMonth() + 1
@@ -42,7 +56,7 @@ export async function action({ request, params }) {
   const data = await request.formData()
 
   let url = `http://localhost:3000/${data.get('select')}-comments`
-  console.log()
+
   const list = await fetch(url)
   const index = await list.json()
 
@@ -50,7 +64,7 @@ export async function action({ request, params }) {
     id: index[index.length - 1].id + 1,
     commentId: parseInt(data.get('id')),
     date: year + '-' + month + '-' + date,
-    writer: 'seo',
+    writer: data.get('name'),
     contents: data.get('contents'),
   }
 

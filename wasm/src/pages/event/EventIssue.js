@@ -2,8 +2,8 @@ import { Suspense } from 'react'
 import { Await, defer, useRouteLoaderData } from 'react-router-dom'
 import CommunityList from '../../components/community/CommunityList'
 
-function KoreanPage() {
-  const data = useRouteLoaderData('korean')
+function EventIssuePage() {
+  const data = useRouteLoaderData('event')
   const commentAmount = []
   for (let i = 0; i < data.posts.length; i++) {
     commentAmount.push(0)
@@ -24,16 +24,20 @@ function KoreanPage() {
   )
 }
 
-async function loadKorean() {
-  const response = await fetch('http://localhost:3000/korean/')
+export default EventIssuePage
+
+async function loadEvent() {
+  const response = await fetch('http://localhost:3000/event-issue')
   if (!response.ok) {
   } else {
     const resData = await response.json()
+    console.log(resData)
     return resData
   }
 }
-async function loadKoreanComment() {
-  const response = await fetch('http://localhost:3000/korean-comments')
+
+async function loadEventComment() {
+  const response = await fetch('http://localhost:3000/event-issue-comments')
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -41,10 +45,9 @@ async function loadKoreanComment() {
   }
 }
 
-export default KoreanPage
 export async function loader() {
   return defer({
-    posts: await loadKorean(),
-    comments: await loadKoreanComment(),
+    posts: await loadEvent(),
+    comments: await loadEventComment(),
   })
 }

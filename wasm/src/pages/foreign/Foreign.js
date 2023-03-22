@@ -1,13 +1,24 @@
 import { Suspense } from 'react'
 import { Await, defer, useRouteLoaderData } from 'react-router-dom'
-import CommunityList from '../../components/CommunityList'
+import CommunityList from '../../components/community/CommunityList'
 
 function ForeignPage() {
-  const { posts } = useRouteLoaderData('foreign')
+  const data = useRouteLoaderData('foreign')
+  const commentAmount = []
+  for (let i = 0; i < data.posts.length; i++) {
+    commentAmount.push(0)
+    for (let j = 0; j < data.comments.length; j++) {
+      if (parseInt(data.comments[j].commentId) === parseInt(data.posts[i].id)) {
+        commentAmount[i]++
+      }
+    }
+  }
   return (
     <Suspense>
-      <Await resolve={posts}>
-        {(loadPosts) => <CommunityList posts={loadPosts} />}
+      <Await resolve={data.posts}>
+        {(loadData) => (
+          <CommunityList posts={loadData} commentAmount={commentAmount} />
+        )}
       </Await>
     </Suspense>
   )
@@ -22,10 +33,20 @@ async function loadForeign() {
   }
 }
 
+async function loadForeignComment() {
+  const response = await fetch('http://localhost:3000/foreign-comments')
+  if (!response.ok) {
+  } else {
+    const resData = await response.json()
+    return resData
+  }
+}
+
 export default ForeignPage
 
-export function loader() {
+export async function loader() {
   return defer({
-    posts: loadForeign(),
+    posts: await loadForeign(),
+    comments: await loadForeignComment(),
   })
 }

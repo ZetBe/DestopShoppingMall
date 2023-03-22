@@ -2,7 +2,7 @@
   "korean": [
     {
       "id": 1,
-      "select": "foreign",
+      "select": "korean",
       "title": "첫번째 게시글",
       "writer": "ZetBe",
       "date": "2023-3-19",
@@ -39,6 +39,38 @@
       "writer": "seo",
       "date": "2023-3-21",
       "contents": "sdf"
+    },
+    {
+      "id": 7,
+      "select": "korean",
+      "title": "물은 다 거기서 거기 같은데",
+      "writer": "seo",
+      "date": "2023-3-22",
+      "contents": "나만 그런가?"
+    },
+    {
+      "id": 8,
+      "select": "korean",
+      "title": "ㅁㄴㅇㄹ",
+      "writer": "seo",
+      "date": "2023-3-22",
+      "contents": "ㅁㅇㄹㄴ"
+    },
+    {
+      "id": 9,
+      "select": "korean",
+      "title": "ㄹㅇ",
+      "writer": "seo",
+      "date": "2023-3-22",
+      "contents": "ㄹㅇ"
+    },
+    {
+      "id": 10,
+      "select": "korean",
+      "title": "ㅁㄴㅇㄹ",
+      "writer": "ZetBe",
+      "date": "2023-3-22",
+      "contents": "ㅁㄴㅇㄹ"
     }
   ],
   "korean-comments": [
@@ -62,6 +94,13 @@
       "date": "2023-3-21",
       "writer": "seo",
       "contents": "어허"
+    },
+    {
+      "id": 4,
+      "commentId": 1,
+      "date": "2023-3-22",
+      "writer": "ZetBe",
+      "contents": "넹"
     }
   ],
   "foreign": [
@@ -111,6 +150,13 @@
       "date": "2023-3-21",
       "writer": "seo",
       "contents": "응 싫어"
+    },
+    {
+      "id": 4,
+      "commentId": 1,
+      "date": "2023-3-22",
+      "writer": "ZetBe",
+      "contents": "그렇구나"
     }
   ],
   "event-issue": [
@@ -118,8 +164,24 @@
       "id": 1,
       "title": "반갑습니다.",
       "writer": "ZetBe",
-      "date": "2023-3-19-19:21",
+      "date": "2023-3-19",
       "contents": "여기 방문하신 기념으로 저의 사랑을 드리겠습니다."
+    }
+  ],
+  "event-issue-comments": [
+    {
+      "id": 1,
+      "commentId": 1,
+      "writer": "seo",
+      "date": "2023-3-22",
+      "contents": "으악"
+    },
+    {
+      "id": 2,
+      "commentId": 1,
+      "date": "2023-3-22",
+      "writer": "ZetBe",
+      "contents": "차단할게요"
     }
   ],
   "login": [
@@ -149,9 +211,9 @@
       "username": "ㅁㅇㄴㄹ"
     },
     {
-      "id": "asdfsadf",
-      "password": "sadfasdgdas",
-      "username": "ZetBe"
+      "id": "asdfafds",
+      "password": "asdfasfd",
+      "username": "asdfadsf"
     }
   ]
 }

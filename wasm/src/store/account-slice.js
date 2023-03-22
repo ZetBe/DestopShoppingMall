@@ -2,14 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const accountSlice = createSlice({
   name: 'account',
-  initialState: { login: false, username: '' },
+  initialState: { login: false, username: '', failCount: 0 },
   reducers: {
     login(state, action) {
       state.login = true
       state.username = action.payload
+      state.failCount = 0
+      state.register = false
     },
     logout(state) {
       state.login = false
+      state.username = ''
+    },
+    failLogin(state) {
+      state.failCount++
+    },
+    reLogin(state) {
+      state.failCount = 0
     },
   },
 })

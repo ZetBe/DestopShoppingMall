@@ -1,10 +1,11 @@
 import { Suspense } from 'react'
 import { Await, defer, useParams, useRouteLoaderData } from 'react-router-dom'
-import CommunityDetail from '../../components/CommunityDetail'
-import CommunityComments from '../../components/CommunityComments'
+import CommunityDetail from '../../components/community/CommunityDetail'
+import CommunityComments from '../../components/community/CommunityComments'
 function ForeignDetailPage() {
   const { post, comments } = useRouteLoaderData('foreign-detail')
   const params = useParams()
+
   return (
     <>
       <Suspense>

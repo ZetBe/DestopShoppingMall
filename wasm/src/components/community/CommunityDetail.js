@@ -1,12 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 function CommunityDetail({ post, params }) {
   const navigate = useNavigate()
-
+  const state = useSelector((state) => state.account)
   const id = params.id
   const select = post.select
-
   const deleteHandler = async () => {
     const proceed = window.confirm('진짜 지울거임?')
 
@@ -21,10 +21,13 @@ function CommunityDetail({ post, params }) {
       <article>
         <h1>{post.title}</h1>
         <time>{post.date}</time>
+        <p>{post.writer}</p>
         <p>{post.contents}</p>
         <div>{post.views}</div>
       </article>
-      <button onClick={deleteHandler}>삭제</button>
+      {state.username === post.writer && (
+        <button onClick={deleteHandler}>삭제</button>
+      )}
       <hr></hr>
     </>
   )

@@ -1,22 +1,25 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import RootLayout from './pages/RootLayout'
+import RootLayout from './pages/layout/RootLayout'
 import HomePage from './pages/Home'
 import KoreanPage, { loader as koreanLoader } from './pages/korean/Korean'
 import ForeignPage, { loader as foreignLoader } from './pages/foreign/Foreign'
-import EventIssuePage from './pages/EventIssue'
+import EventIssuePage, { loader as eventLoader } from './pages/event/EventIssue'
 import LoginPage, { loader as loginLoader } from './pages/login/Login'
 import KoreanDetailPage, {
   loader as koreanDetailLoader,
 } from './pages/korean/KoreanDetail'
-import CommunityLayout from './pages/CommunityLayout'
+import CommunityLayout from './pages/layout/CommunityLayout'
 import NewPostPage from './pages/NewPost'
 import { action as manipulatePostAction } from './components/PostForm'
 import ForeignDetailPage, {
   loader as foreignDetailLoader,
 } from './pages/foreign/ForeignDetail'
-import { action as loginAction } from './components/SignUp'
+import { action as loginAction } from './components/login/SignUp'
 import RegisterPage, { loader as registerLoader } from './pages/login/Register'
-import { action as commentAction } from './components/CommunityComments'
+import { action as commentAction } from './components/community/CommunityComments'
+import EventIssueDetailPage, {
+  loader as eventDetailLoader,
+} from './pages/event/EventIssueDetail'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -75,7 +78,24 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'new', element: <NewPostPage />, action: manipulatePostAction },
-      { path: 'event-issue', element: <EventIssuePage /> },
+      {
+        path: 'event-issue',
+        children: [
+          {
+            index: true,
+            element: <EventIssuePage />,
+            id: 'event',
+            loader: eventLoader,
+          },
+          {
+            path: ':id',
+            id: 'event-detail',
+            element: <EventIssueDetailPage />,
+            loader: eventDetailLoader,
+            action: commentAction,
+          },
+        ],
+      },
       {
         path: 'login',
         children: [

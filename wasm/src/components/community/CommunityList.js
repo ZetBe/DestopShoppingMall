@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-function CommunityList({ posts }) {
+function CommunityList({ posts, commentAmount }) {
   return (
     <div>
       <h1>목록</h1>
@@ -11,8 +11,7 @@ function CommunityList({ posts }) {
             <th>작성자</th>
             <th>제목</th>
             <th>날짜</th>
-            <th>조회수</th>
-            <th>좋아용</th>
+            <th>댓글 수</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +24,7 @@ function CommunityList({ posts }) {
                 <NavLink to={`${post.id}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
+              <td>{commentAmount[index]}</td>
             </tr>
           ))}
         </tbody>

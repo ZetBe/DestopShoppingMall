@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import {
   Form,
   useNavigate,
@@ -10,7 +11,7 @@ function PostForm({ method, post }) {
   const navigate = useNavigate()
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
-
+  const state = useSelector((state) => state.account)
   function cancelHandler() {
     navigate('..')
   }
@@ -18,6 +19,7 @@ function PostForm({ method, post }) {
   return (
     <Form method={method}>
       <p>
+        <input name="name" value={state.username} readOnly></input>
         <label htmlFor="select">어느 구역에서 작성하고 싶나요?</label>
         <br></br>
         <select name="select">
@@ -54,7 +56,7 @@ export async function action({ request, params }) {
   let year = today.getFullYear()
   let month = today.getMonth() + 1
   let date = today.getDate()
-  console.log(params.id)
+
   const method = request.method
   const data = await request.formData()
   let eventData = {
@@ -67,18 +69,13 @@ export async function action({ request, params }) {
     url = 'http://localhost:3000/korean'
     const list = await fetch(url)
     const index = await list.json()
-    console.log(index[index.length - 1].id + 1)
     eventData = {
       id: index[index.length - 1].id + 1,
       select: 'korean',
       title: data.get('title'),
-      writer: 'seo',
+      writer: data.get('name'),
       date: year + '-' + month + '-' + date,
       contents: data.get('contents'),
-      views: 0,
-      likes: 0,
-      hates: 0,
-      comments: [{}],
     }
   } else if (eventData.select === '외국 물') {
     url = 'http://localhost:3000/foreign'
@@ -88,16 +85,12 @@ export async function action({ request, params }) {
       id: index[index.length - 1].id + 1,
       select: 'foreign',
       title: data.get('title'),
-      writer: 'seo',
+      writer: data.get('name'),
       date: year + '-' + month + '-' + date,
       contents: data.get('contents'),
-      views: 0,
-      likes: 0,
-      hates: 0,
-      comments: [{}],
     }
   }
-  console.log(eventData)
+  console.log(data.get('name'))
   const response = await fetch(url, {
     method: method,
     headers: {

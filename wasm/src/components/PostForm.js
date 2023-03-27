@@ -22,22 +22,61 @@ function PostForm({ method, post }) {
         <input name="name" value={state.username} readOnly></input>
         <label htmlFor="select">어느 구역에서 작성하고 싶나요?</label>
         <br></br>
-        <select name="select">
-          <option name="korean" key={0}>
-            국산 물
-          </option>
-          <option name="foreign" key={1}>
-            외국 물
-          </option>
-        </select>
+
+        {!post && (
+          <select name="select">
+            <option name="korean" key={0}>
+              국산 물
+            </option>
+            <option name="foreign" key={1}>
+              외국 물
+            </option>
+            {state.username === 'ZetBe' && (
+              <option name="event" key={2}>
+                이벤트
+              </option>
+            )}
+          </select>
+        )}
+        {post && (
+          <select name="select">
+            {post.select === 'korean' && (
+              <option name="korean" key={0}>
+                국산 물
+              </option>
+            )}
+            {post.select === 'foreign' && (
+              <option name="foreign" key={1}>
+                외국 물
+              </option>
+            )}
+            {state.username === 'ZetBe' && (
+              <option name="event" key={2}>
+                이벤트
+              </option>
+            )}
+          </select>
+        )}
       </p>
       <p>
         <label htmlFor="title">제목</label>
-        <input id="title" type="text" name="title" required />
+        <input
+          id="title"
+          type="text"
+          name="title"
+          defaultValue={post && post.title}
+          required
+        />
       </p>
       <p>
         <label htmlFor="contents">내용</label>
-        <input id="contents" name="contents" rows="5" required />
+        <input
+          id="contents"
+          name="contents"
+          rows="5"
+          defaultValue={post && post.contents}
+          required
+        />
       </p>
       <div>
         <button disabled={isSubmitting}>제출</button>
@@ -62,7 +101,7 @@ export async function action({ request, params }) {
   let eventData = {
     select: data.get('select'),
   }
-
+  let say = '작성이 완료되었습니다.'
   let url = 'http://localhost:3000/'
 
   if (eventData.select === '국산 물') {
@@ -77,6 +116,15 @@ export async function action({ request, params }) {
       date: year + '-' + month + '-' + date,
       contents: data.get('contents'),
     }
+    if (method === 'PATCH') {
+      eventData = {
+        title: data.get('title'),
+        writer: data.get('name'),
+        contents: data.get('contents'),
+      }
+      url = 'http://localhost:3000/korean/' + params.id
+      say = '수정이 완료되었습니다.'
+    }
   } else if (eventData.select === '외국 물') {
     url = 'http://localhost:3000/foreign'
     const list = await fetch(url)
@@ -89,8 +137,37 @@ export async function action({ request, params }) {
       date: year + '-' + month + '-' + date,
       contents: data.get('contents'),
     }
+    if (method === 'PATCH') {
+      eventData = {
+        title: data.get('title'),
+        writer: data.get('name'),
+        contents: data.get('contents'),
+      }
+      url = 'http://localhost:3000/foreign/' + params.id
+      say = '수정이 완료되었습니다.'
+    }
+  } else if (eventData.select === '이벤트') {
+    url = 'http://localhost:3000/event'
+    const list = await fetch(url)
+    const index = await list.json()
+    eventData = {
+      id: index[index.length - 1].id + 1,
+      select: 'foreign',
+      title: data.get('title'),
+      writer: data.get('name'),
+      date: year + '-' + month + '-' + date,
+      contents: data.get('contents'),
+    }
+    if (method === 'PATCH') {
+      eventData = {
+        title: data.get('title'),
+        writer: data.get('name'),
+        contents: data.get('contents'),
+      }
+      url = 'http://localhost:3000/event/' + params.id
+      say = '수정이 완료되었습니다.'
+    }
   }
-  console.log(data.get('name'))
   const response = await fetch(url, {
     method: method,
     headers: {
@@ -102,5 +179,6 @@ export async function action({ request, params }) {
   if (!response.ok) {
     throw json({ message: 'Could not save event.' }, { status: 500 })
   }
+  window.alert(say)
   return redirect('/')
 }

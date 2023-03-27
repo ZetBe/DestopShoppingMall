@@ -56,10 +56,10 @@ async function loadForeignComment(id) {
     return list
   }
 }
-export function loader({ request, params }) {
+export async function loader({ request, params }) {
   const id = params.id
   return defer({
-    post: loadForeignDetail(id),
-    comments: loadForeignComment(id),
+    post: await loadForeignDetail(id),
+    comments: await loadForeignComment(id),
   })
 }

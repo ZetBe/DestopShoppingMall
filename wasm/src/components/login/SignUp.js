@@ -92,8 +92,11 @@ export async function action({ request, params }) {
   const accounts = await fetch('http://localhost:3000/login')
   const account = await accounts.json()
   for (let i = 0; i < account.length; i++) {
-    if (account[i].username === eventData.username) {
-      window.alert('같은 이름을 가진 유저가 있어 다시 입력해주세요')
+    if (
+      account[i].username === eventData.username ||
+      account[i].id === eventData.id
+    ) {
+      window.alert('같은 이름이나 아이디를 가진 유저가 있어 다시 입력해주세요')
       return redirect('/login/register')
     }
   }

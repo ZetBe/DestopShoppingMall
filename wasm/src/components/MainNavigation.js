@@ -41,12 +41,12 @@ function MainNavigation() {
             </li>
             <li>
               <NavLink
-                to="/event-issue"
+                to="/event"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
               >
-                이벤트/문의
+                이벤트
               </NavLink>
             </li>
             <li>

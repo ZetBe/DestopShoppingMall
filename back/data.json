@@ -3,7 +3,7 @@
     {
       "id": 1,
       "select": "korean",
-      "title": "첫번째 게시글",
+      "title": "첫번째 게시글을을",
       "writer": "ZetBe",
       "date": "2023-3-19",
       "contents": "여기서는 물 이야기만 하시길 바랍니다."
@@ -127,6 +127,14 @@
       "writer": "seo",
       "date": "2023-3-20",
       "contents": "ㅁㄴㅇ"
+    },
+    {
+      "id": 5,
+      "select": "foreign",
+      "title": "관리자 이상한데",
+      "writer": "zxcv",
+      "date": "2023-3-28",
+      "contents": "관리자 꼬라지 ㅋㅋ"
     }
   ],
   "foreign-comments": [
@@ -159,16 +167,25 @@
       "contents": "그렇구나"
     }
   ],
-  "event-issue": [
+  "event": [
     {
       "id": 1,
+      "select": "event",
       "title": "반갑습니다.",
       "writer": "ZetBe",
       "date": "2023-3-19",
       "contents": "여기 방문하신 기념으로 저의 사랑을 드리겠습니다."
+    },
+    {
+      "id": 2,
+      "select": "foreign",
+      "title": "오픈 직전 이벤트!",
+      "writer": "ZetBe",
+      "date": "2023-3-28",
+      "contents": "오픈 직전 기념 이벤트로 추첨을 통해 10명에게 롤스로이스를 드립니다! (안줄 수도 있음)"
     }
   ],
-  "event-issue-comments": [
+  "event-comments": [
     {
       "id": 1,
       "commentId": 1,
@@ -182,6 +199,13 @@
       "date": "2023-3-22",
       "writer": "ZetBe",
       "contents": "차단할게요"
+    },
+    {
+      "id": 3,
+      "commentId": 2,
+      "date": "2023-3-28",
+      "writer": "zxcv",
+      "contents": "그럴거면 하지마라"
     }
   ],
   "login": [
@@ -214,6 +238,11 @@
       "id": "asdfafds",
       "password": "asdfasfd",
       "username": "asdfadsf"
+    },
+    {
+      "id": "zxcvzxcv",
+      "password": "zxcvzxcv",
+      "username": "zxcv"
     }
   ]
 }

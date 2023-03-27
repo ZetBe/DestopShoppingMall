@@ -57,10 +57,10 @@ async function loadKoreanComment(id) {
   }
 }
 
-export function loader({ request, params }) {
+export async function loader({ request, params }) {
   const id = params.id
   return defer({
-    post: loadKoreanDetail(id),
-    comments: loadKoreanComment(id),
+    post: await loadKoreanDetail(id),
+    comments: await loadKoreanComment(id),
   })
 }

@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Await, defer, useParams, useRouteLoaderData } from 'react-router-dom'
 import CommunityDetail from '../../components/community/CommunityDetail'
 import CommunityComments from '../../components/community/CommunityComments'
-function EventIssueDetailPage() {
+function EventDetailPage() {
   const { post, comments } = useRouteLoaderData('event-detail')
   const params = useParams()
   return (
@@ -20,7 +20,7 @@ function EventIssueDetailPage() {
             <CommunityComments
               comments={loadedComments}
               params={params}
-              select="event-issue"
+              select="event"
             />
           )}
         </Await>
@@ -29,10 +29,10 @@ function EventIssueDetailPage() {
   )
 }
 
-export default EventIssueDetailPage
+export default EventDetailPage
 
 async function loadEventDetail(id) {
-  const response = await fetch('http://localhost:3000/event-issue/' + id)
+  const response = await fetch('http://localhost:3000/event/' + id)
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -41,7 +41,7 @@ async function loadEventDetail(id) {
 }
 
 async function loadEventComment(id) {
-  const response = await fetch('http://localhost:3000/event-issue-comments/')
+  const response = await fetch('http://localhost:3000/event-comments/')
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -56,10 +56,10 @@ async function loadEventComment(id) {
   }
 }
 
-export function loader({ request, params }) {
+export async function loader({ request, params }) {
   const id = params.id
   return defer({
-    post: loadEventDetail(id),
-    comments: loadEventComment(id),
+    post: await loadEventDetail(id),
+    comments: await loadEventComment(id),
   })
 }

@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Await, defer, useRouteLoaderData } from 'react-router-dom'
 import CommunityList from '../../components/community/CommunityList'
 
-function EventIssuePage() {
+function EventPage() {
   const data = useRouteLoaderData('event')
   const commentAmount = []
   for (let i = 0; i < data.posts.length; i++) {
@@ -24,20 +24,19 @@ function EventIssuePage() {
   )
 }
 
-export default EventIssuePage
+export default EventPage
 
 async function loadEvent() {
-  const response = await fetch('http://localhost:3000/event-issue')
+  const response = await fetch('http://localhost:3000/event')
   if (!response.ok) {
   } else {
     const resData = await response.json()
-    console.log(resData)
     return resData
   }
 }
 
 async function loadEventComment() {
-  const response = await fetch('http://localhost:3000/event-issue-comments')
+  const response = await fetch('http://localhost:3000/event-comments')
   if (!response.ok) {
   } else {
     const resData = await response.json()

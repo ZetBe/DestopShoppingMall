@@ -3,7 +3,7 @@ import { Form, json, redirect } from 'react-router-dom'
 
 function CommunityComments({ comments, params, select }) {
   const state = useSelector((state) => state.account)
-  console.log(comments)
+  console.log(params.id)
   return (
     <>
       {state.login && (
@@ -46,7 +46,6 @@ function CommunityComments({ comments, params, select }) {
 export default CommunityComments
 
 export async function action({ request, params }) {
-  console.log('생존')
   let today = new Date()
   let year = today.getFullYear()
   let month = today.getMonth() + 1
@@ -56,7 +55,7 @@ export async function action({ request, params }) {
   const data = await request.formData()
 
   let url = `http://localhost:3000/${data.get('select')}-comments`
-
+  console.log(url)
   const list = await fetch(url)
   const index = await list.json()
 

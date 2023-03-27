@@ -3,7 +3,7 @@ import RootLayout from './pages/layout/RootLayout'
 import HomePage from './pages/Home'
 import KoreanPage, { loader as koreanLoader } from './pages/korean/Korean'
 import ForeignPage, { loader as foreignLoader } from './pages/foreign/Foreign'
-import EventIssuePage, { loader as eventLoader } from './pages/event/EventIssue'
+import EventPage, { loader as eventLoader } from './pages/event/Event'
 import LoginPage, { loader as loginLoader } from './pages/login/Login'
 import KoreanDetailPage, {
   loader as koreanDetailLoader,
@@ -17,9 +17,12 @@ import ForeignDetailPage, {
 import { action as loginAction } from './components/login/SignUp'
 import RegisterPage, { loader as registerLoader } from './pages/login/Register'
 import { action as commentAction } from './components/community/CommunityComments'
-import EventIssueDetailPage, {
+import EventDetailPage, {
   loader as eventDetailLoader,
-} from './pages/event/EventIssueDetail'
+} from './pages/event/EventDetail'
+import EditPage from './pages/Edit'
+import EventLayout from './pages/event/EventLayout'
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -47,6 +50,11 @@ const router = createBrowserRouter([
                 element: <KoreanDetailPage />,
                 action: commentAction,
               },
+              {
+                path: 'edit',
+                element: <EditPage />,
+                action: manipulatePostAction,
+              },
             ],
           },
         ],
@@ -73,26 +81,42 @@ const router = createBrowserRouter([
                 element: <ForeignDetailPage />,
                 action: commentAction,
               },
+              {
+                path: 'edit',
+                element: <EditPage />,
+                action: manipulatePostAction,
+              },
             ],
           },
         ],
       },
       { path: 'new', element: <NewPostPage />, action: manipulatePostAction },
       {
-        path: 'event-issue',
+        path: 'event',
+        element: <EventLayout />,
         children: [
           {
             index: true,
-            element: <EventIssuePage />,
+            element: <EventPage />,
             id: 'event',
             loader: eventLoader,
           },
           {
             path: ':id',
             id: 'event-detail',
-            element: <EventIssueDetailPage />,
             loader: eventDetailLoader,
-            action: commentAction,
+            children: [
+              {
+                index: true,
+                element: <EventDetailPage />,
+                action: commentAction,
+              },
+              {
+                path: 'edit',
+                element: <EditPage />,
+                action: manipulatePostAction,
+              },
+            ],
           },
         ],
       },

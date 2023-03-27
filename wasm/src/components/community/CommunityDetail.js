@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 function CommunityDetail({ post, params }) {
@@ -26,7 +26,12 @@ function CommunityDetail({ post, params }) {
         <div>{post.views}</div>
       </article>
       {state.username === post.writer && (
-        <button onClick={deleteHandler}>삭제</button>
+        <main>
+          <button onClick={deleteHandler}>삭제</button>
+          <Link to="edit" state={{ select: post.select }}>
+            편집
+          </Link>
+        </main>
       )}
       <hr></hr>
     </>
@@ -36,6 +41,5 @@ function CommunityDetail({ post, params }) {
 export default CommunityDetail
 
 export function detailId({ params }) {
-  console.log(params.id)
   return params.id
 }

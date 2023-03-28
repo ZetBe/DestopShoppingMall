@@ -6,6 +6,7 @@ import {
   json,
   redirect,
 } from 'react-router-dom'
+import classes from './PostForm.module.css'
 
 function PostForm({ method, post }) {
   const navigate = useNavigate()
@@ -19,10 +20,14 @@ function PostForm({ method, post }) {
   return (
     <Form method={method}>
       <p>
-        <input name="name" value={state.username} readOnly></input>
-        <label htmlFor="select">어느 구역에서 작성하고 싶나요?</label>
-        <br></br>
-
+        작성자
+        <input
+          className={classes.p}
+          name="name"
+          value={state.username}
+          readOnly
+        ></input>
+        카테고리
         {!post && (
           <select name="select">
             <option name="korean" key={0}>
@@ -59,28 +64,35 @@ function PostForm({ method, post }) {
         )}
       </p>
       <p>
-        <label htmlFor="title">제목</label>
         <input
           id="title"
           type="text"
           name="title"
           defaultValue={post && post.title}
+          placeholder="제목"
           required
         />
       </p>
       <p>
-        <label htmlFor="contents">내용</label>
-        <input
+        <textarea
           id="contents"
           name="contents"
           rows="5"
           defaultValue={post && post.contents}
+          placeholder="내용"
           required
         />
       </p>
-      <div>
-        <button disabled={isSubmitting}>제출</button>
-        <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+      <div className={classes.frame}>
+        <button disabled={isSubmitting} className={classes.btn}>
+          제출
+        </button>
+        <button
+          type="button"
+          className={classes.btn}
+          onClick={cancelHandler}
+          disabled={isSubmitting}
+        >
           취소
         </button>
       </div>

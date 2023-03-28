@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
-
+import classes from './CommunityList.module.css'
 function CommunityList({ posts, commentAmount }) {
   return (
     <div>
-      <h1>목록</h1>
-      <table>
+      <h1 style={{ marginRight: '60%' }}>목록</h1>
+      <table className={classes.table}>
         <thead>
           <tr>
             <th>id</th>

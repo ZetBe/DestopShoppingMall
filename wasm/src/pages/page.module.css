@@ -1,0 +1,14 @@
+.bottom {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 10%;
+}
+footer {
+  height: 0;
+  position: relative;
+  transform: translateY(-100%);
+}
+
+.timer {
+  text-align: center;
+}

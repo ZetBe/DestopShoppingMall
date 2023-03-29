@@ -1,8 +1,35 @@
+.form {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  border-left: solid #000000 1.5px;
+  border-right: solid #000000 1.5px;
+  width: 50%;
+}
+
 .p {
   background-color: #ffffff;
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
   width: 30%;
+}
+
+.input {
+  background-color: lightgray;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 80%;
   border: #000000;
+}
+
+.form select {
+  width: 30%;
+  background-color: lightgray;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
 }

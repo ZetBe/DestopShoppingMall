@@ -18,85 +18,89 @@ function PostForm({ method, post }) {
   }
 
   return (
-    <Form method={method}>
-      <p>
-        작성자
-        <input
-          className={classes.p}
-          name="name"
-          value={state.username}
-          readOnly
-        ></input>
-        카테고리
-        {!post && (
-          <select name="select">
-            <option name="korean" key={0}>
-              국산 물
-            </option>
-            <option name="foreign" key={1}>
-              외국 물
-            </option>
-            {state.username === 'ZetBe' && (
-              <option name="event" key={2}>
-                이벤트
-              </option>
-            )}
-          </select>
-        )}
-        {post && (
-          <select name="select">
-            {post.select === 'korean' && (
+    <div className={classes.frame}>
+      <Form method={method} className={classes.form}>
+        <p>
+          작성자
+          <input
+            className={classes.p}
+            name="name"
+            value={state.username}
+            readOnly
+          ></input>
+          카테고리
+          {!post && (
+            <select name="select">
               <option name="korean" key={0}>
                 국산 물
               </option>
-            )}
-            {post.select === 'foreign' && (
               <option name="foreign" key={1}>
                 외국 물
               </option>
-            )}
-            {state.username === 'ZetBe' && (
-              <option name="event" key={2}>
-                이벤트
-              </option>
-            )}
-          </select>
-        )}
-      </p>
-      <p>
-        <input
-          id="title"
-          type="text"
-          name="title"
-          defaultValue={post && post.title}
-          placeholder="제목"
-          required
-        />
-      </p>
-      <p>
-        <textarea
-          id="contents"
-          name="contents"
-          rows="5"
-          defaultValue={post && post.contents}
-          placeholder="내용"
-          required
-        />
-      </p>
-      <div className={classes.frame}>
-        <button disabled={isSubmitting} className={classes.btn}>
-          제출
-        </button>
-        <button
-          type="button"
-          className={classes.btn}
-          onClick={cancelHandler}
-          disabled={isSubmitting}
-        >
-          취소
-        </button>
-      </div>
-    </Form>
+              {state.username === 'ZetBe' && (
+                <option name="event" key={2}>
+                  이벤트
+                </option>
+              )}
+            </select>
+          )}
+          {post && (
+            <select name="select">
+              {post.select === 'korean' && (
+                <option name="korean" key={0}>
+                  국산 물
+                </option>
+              )}
+              {post.select === 'foreign' && (
+                <option name="foreign" key={1}>
+                  외국 물
+                </option>
+              )}
+              {state.username === 'ZetBe' && (
+                <option name="event" key={2}>
+                  이벤트
+                </option>
+              )}
+            </select>
+          )}
+        </p>
+        <p>
+          <input
+            id="title"
+            type="text"
+            name="title"
+            className={classes.input}
+            defaultValue={post && post.title}
+            placeholder="제목"
+            required
+          />
+        </p>
+        <p>
+          <textarea
+            id="contents"
+            name="contents"
+            rows="5"
+            className={classes.input}
+            defaultValue={post && post.contents}
+            placeholder="내용"
+            required
+          />
+        </p>
+        <div>
+          <button disabled={isSubmitting} className={classes.btn}>
+            제출
+          </button>
+          <button
+            type="button"
+            className={classes.btn}
+            onClick={cancelHandler}
+            disabled={isSubmitting}
+          >
+            취소
+          </button>
+        </div>
+      </Form>
+    </div>
   )
 }
 

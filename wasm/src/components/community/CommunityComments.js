@@ -1,45 +1,67 @@
 import { useSelector } from 'react-redux'
 import { Form, json, redirect } from 'react-router-dom'
+import classes from './CommunityComments.module.css'
 
 function CommunityComments({ comments, params, select }) {
   const state = useSelector((state) => state.account)
   console.log(params.id)
   return (
-    <>
+    <div className={classes.comment}>
       {state.login && (
         <>
           <Form method="POST">
-            <input id="id" name="id" value={params.id} readOnly></input>
-            <input id="select" name="select" value={select} readOnly></input>
+            게시글 아이디
+            <input
+              id="id"
+              name="id"
+              className={classes.contents}
+              value={params.id}
+              readOnly
+            ></input>
+            위치
+            <input
+              id="select"
+              name="select"
+              className={classes.contents}
+              value={select}
+              readOnly
+            ></input>
+            작성자
             <input
               id="name"
               name="name"
+              className={classes.contents}
               value={state.username}
               readOnly
             ></input>
             <p>
               <label htmlFor="contents">내용</label>
-              <input id="contents" name="contents" rows="5" required />
+              <input
+                id="contents"
+                className={classes.input}
+                name="contents"
+                rows="5"
+                required
+              />
             </p>
             <button>제출</button>
           </Form>
           <hr></hr>
+          댓글 수: {comments.length}
         </>
       )}
-      댓글 수: {comments.length}
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
-            <p>
+            <b>
               {comment.id}
-              {comment.writer}
-            </p>
+              글쓴이 {comment.writer} {comment.date}
+            </b>
             <p>{comment.contents}</p>
-            {comment.date}
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,54 @@
+.comment {
+  border-left: solid #000000 1.5px;
+  border-right: solid #000000 1.5px;
+}
+
+.comment form {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  border-left: solid #000000 1.5px;
+  border-right: solid #000000 1.5px;
+  width: 50%;
+}
+
+.contents {
+  background-color: #ffffff;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+}
+
+.input {
+  background-color: lightgray;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 80%;
+  border: #000000;
+}
+
+.comment ul {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: left;
+  border-left: solid #000000 1.5px;
+  border-right: solid #000000 1.5px;
+  width: 50%;
+}
+
+.comment li {
+  border-bottom: solid #000000 1.5px;
+  border-top: solid #000000 1.5px;
+  line-height: normal;
+  margin-bottom: 5%;
+}
+
+.comment li b b {
+  text-align: left;
+}

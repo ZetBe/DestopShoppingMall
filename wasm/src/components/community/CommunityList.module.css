@@ -3,8 +3,7 @@
   border-collapse: collapse;
   text-align: left;
   line-height: 1.5;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #ccc;
 }
 
 .table thead th {
@@ -12,8 +11,8 @@
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
-  color: #fff;
-  background: #aaaaaa;
+  color: #000000;
+  background: #e3f9fe;
   margin: 20px 10px;
 }
 
@@ -22,4 +21,12 @@
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
+}
+
+.table tr:nth-child(even) {
+  background: #ecf8fb;
+}
+
+.table a {
+  text-decoration: none;
 }

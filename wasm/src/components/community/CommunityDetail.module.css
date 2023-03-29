@@ -1,7 +1,26 @@
-.type10 {
+.time {
   border-collapse: collapse;
-  text-align: left;
+  text-align: right;
   line-height: 1.5;
   margin: 20px 10px;
   border: 0;
+}
+
+.main {
+  text-align: right;
+  position: relative;
+  right: 400px;
+  margin: auto;
+}
+
+.main a {
+  margin: 20px;
+  width: 10%;
+  border: none;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+.main a:hover {
+  text-decoration: underline;
+  background-color: aquamarine;
 }

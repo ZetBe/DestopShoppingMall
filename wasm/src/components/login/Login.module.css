@@ -1,0 +1,27 @@
+.form {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  border-left: solid #000000 1.5px;
+  border-right: solid #000000 1.5px;
+  width: 50%;
+}
+
+.inputIn {
+  background-color: lightgray;
+  padding: 6px 15px;
+  margin: 8px 0;
+  width: 30%;
+  border: #000000;
+}
+
+.inputUp {
+  background-color: lightgray;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 40%;
+  border: #000000;
+}

@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { accountActions } from '../../store/account-slice'
+import classes from './Login.module.css'
+
 function SignIn({ accounts }) {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
@@ -31,13 +33,14 @@ function SignIn({ accounts }) {
     return navigate('/login')
   }
   return (
-    <Form>
+    <Form className={classes.form}>
       <label htmlFor="id">id</label>
       <input
         id="id"
         type="text"
         name="id"
         value={id}
+        className={classes.inputIn}
         onChange={(e) => setId(e.target.value)}
         required
       ></input>
@@ -46,11 +49,12 @@ function SignIn({ accounts }) {
         id="password"
         type="password"
         value={password}
+        className={classes.inputIn}
         onChange={(e) => setPassword(e.target.value)}
         name="password"
         required
       ></input>
-
+      <br></br>
       <button onClick={loginHandler}>
         <Link to="/">로그인</Link>
       </button>

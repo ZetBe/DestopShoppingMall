@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import classes from './MainNavigation.module.css'
+import classes from './Navigation.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { accountActions } from '../store/account-slice'
 function MainNavigation() {

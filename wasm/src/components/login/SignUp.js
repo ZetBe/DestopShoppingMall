@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Form, json, redirect, NavLink } from 'react-router-dom'
+import classes from './Login.module.css'
 
 function SignUp({ accounts }) {
   const [id, setId] = useState('')
@@ -31,13 +32,14 @@ function SignUp({ accounts }) {
   }
 
   return (
-    <Form method="POST">
+    <Form method="POST" className={classes.form}>
       <div>
         <label htmlFor="name">이름을 입력해주세요</label>
         <input
           id="username"
           type="text"
           name="username"
+          className={classes.inputUp}
           value={username}
           onChange={usernameHandler}
           required
@@ -50,6 +52,7 @@ function SignUp({ accounts }) {
           type="text"
           name="id"
           value={id}
+          className={classes.inputUp}
           onChange={idHandler}
           required
         ></input>
@@ -61,6 +64,7 @@ function SignUp({ accounts }) {
           id="password"
           type="password"
           name="password"
+          className={classes.inputUp}
           onChange={passwordHandler}
           value={password}
           required

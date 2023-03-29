@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import classes from '../MainNavigation.module.css'
+import classes from '../Navigation.module.css'
 function CommunityNavigation() {
   const state = useSelector((state) => state.account)
   return (

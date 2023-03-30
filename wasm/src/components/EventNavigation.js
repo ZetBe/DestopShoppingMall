@@ -7,7 +7,7 @@ function EventNavigation() {
   return (
     <header>
       <nav>
-        <ul className={classes.list}>
+        <ul className={classes.move}>
           <li>
             <NavLink to="">목록</NavLink>
           </li>

@@ -1,8 +1,8 @@
 import SignUp from '../../components/login/SignUp'
-import { Await, useLoaderData, defer } from 'react-router-dom'
+import { Await, useRouteLoaderData } from 'react-router-dom'
 import { Suspense } from 'react'
 function RegisterPage() {
-  const { accounts } = useLoaderData()
+  const { accounts } = useRouteLoaderData('login')
   console.log(accounts)
   return (
     <Suspense>
@@ -14,18 +14,3 @@ function RegisterPage() {
 }
 
 export default RegisterPage
-
-async function loadLogin() {
-  const response = await fetch('http://localhost:3000/login')
-  if (!response.ok) {
-  } else {
-    const resData = await response.json()
-    return resData
-  }
-}
-
-export function loader() {
-  return defer({
-    accounts: loadLogin(),
-  })
-}

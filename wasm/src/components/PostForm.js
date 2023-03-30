@@ -118,10 +118,10 @@ export async function action({ request, params }) {
     select: data.get('select'),
   }
   let say = '작성이 완료되었습니다.'
-  let url = 'http://localhost:3000/'
+  let url = 'https://shrub-terrific-beginner.glitch.me/'
 
   if (eventData.select === '국산 물') {
-    url = 'http://localhost:3000/korean'
+    url = 'https://shrub-terrific-beginner.glitch.me/korean'
     const list = await fetch(url)
     const index = await list.json()
     eventData = {
@@ -138,11 +138,11 @@ export async function action({ request, params }) {
         writer: data.get('name'),
         contents: data.get('contents'),
       }
-      url = 'http://localhost:3000/korean/' + params.id
+      url = 'https://shrub-terrific-beginner.glitch.me/korean/' + params.id
       say = '수정이 완료되었습니다.'
     }
   } else if (eventData.select === '외국 물') {
-    url = 'http://localhost:3000/foreign'
+    url = 'https://shrub-terrific-beginner.glitch.me/foreign'
     const list = await fetch(url)
     const index = await list.json()
     eventData = {
@@ -159,11 +159,11 @@ export async function action({ request, params }) {
         writer: data.get('name'),
         contents: data.get('contents'),
       }
-      url = 'http://localhost:3000/foreign/' + params.id
+      url = 'https://shrub-terrific-beginner.glitch.me/foreign/' + params.id
       say = '수정이 완료되었습니다.'
     }
   } else if (eventData.select === '이벤트') {
-    url = 'http://localhost:3000/event'
+    url = 'https://shrub-terrific-beginner.glitch.me/event'
     const list = await fetch(url)
     const index = await list.json()
     eventData = {
@@ -180,7 +180,7 @@ export async function action({ request, params }) {
         writer: data.get('name'),
         contents: data.get('contents'),
       }
-      url = 'http://localhost:3000/event/' + params.id
+      url = 'https://shrub-terrific-beginner.glitch.me/event/' + params.id
       say = '수정이 완료되었습니다.'
     }
   }

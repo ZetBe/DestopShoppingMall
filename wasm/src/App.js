@@ -15,7 +15,7 @@ import ForeignDetailPage, {
   loader as foreignDetailLoader,
 } from './pages/foreign/ForeignDetail'
 import { action as loginAction } from './components/login/SignUp'
-import RegisterPage, { loader as registerLoader } from './pages/login/Register'
+import RegisterPage from './pages/login/Register'
 import { action as commentAction } from './components/community/CommunityComments'
 import EventDetailPage, {
   loader as eventDetailLoader,
@@ -132,7 +132,6 @@ const router = createBrowserRouter([
           {
             path: 'register',
             element: <RegisterPage />,
-            loader: registerLoader,
             action: loginAction,
           },
         ],

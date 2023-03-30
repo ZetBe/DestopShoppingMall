@@ -93,7 +93,9 @@ export async function action({ request, params }) {
     password: data.get('password'),
     username: data.get('username'),
   }
-  const accounts = await fetch('http://localhost:3000/login')
+  const accounts = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/login'
+  )
   const account = await accounts.json()
   for (let i = 0; i < account.length; i++) {
     if (
@@ -105,13 +107,16 @@ export async function action({ request, params }) {
     }
   }
 
-  const response = await fetch('http://localhost:3000/login', {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify(eventData),
-  })
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/login',
+    {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(eventData),
+    }
+  )
 
   if (!response.ok) {
     throw json({ message: 'Could not save event.' }, { status: 500 })

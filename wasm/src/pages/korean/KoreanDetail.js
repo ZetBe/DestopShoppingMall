@@ -33,7 +33,9 @@ function KoreanDetailPage() {
 export default KoreanDetailPage
 
 async function loadKoreanDetail(id) {
-  const response = await fetch('http://localhost:3000/korean/' + id)
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/korean/' + id
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -42,7 +44,9 @@ async function loadKoreanDetail(id) {
 }
 
 async function loadKoreanComment(id) {
-  const response = await fetch('http://localhost:3000/korean-comments')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/korean-comments'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()

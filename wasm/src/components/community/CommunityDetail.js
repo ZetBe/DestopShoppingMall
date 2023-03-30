@@ -12,19 +12,20 @@ function CommunityDetail({ post, params }) {
     const proceed = window.confirm('진짜 지울거임?')
 
     if (proceed) {
-      await axios.delete(`http://localhost:3000/${select}/${id}`)
+      await axios.delete(
+        `https://shrub-terrific-beginner.glitch.me/${select}/${id}`
+      )
       navigate('/')
     }
   }
 
   return (
     <>
-      <article>
+      <article className={classes.article}>
         <h1>{post.title}</h1>
+        작성자: {post.writer}
         <time className={classes.time}>{post.date}</time>
-        {post.writer}
-        <p>{post.contents}</p>
-        <div>{post.views}</div>
+        <div className={classes.contents}>{post.contents}</div>
       </article>
       {state.username === post.writer && (
         <main className={classes.main}>

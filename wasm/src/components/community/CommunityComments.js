@@ -18,6 +18,7 @@ function CommunityComments({ comments, params, select }) {
               value={params.id}
               readOnly
             ></input>
+            <br></br>
             위치
             <input
               id="select"
@@ -26,6 +27,7 @@ function CommunityComments({ comments, params, select }) {
               value={select}
               readOnly
             ></input>
+            <br></br>
             작성자
             <input
               id="name"
@@ -43,8 +45,8 @@ function CommunityComments({ comments, params, select }) {
                 rows="5"
                 required
               />
+              <button>제출</button>
             </p>
-            <button>제출</button>
           </Form>
           <hr></hr>
           댓글 수: {comments.length}
@@ -76,7 +78,9 @@ export async function action({ request, params }) {
   const method = request.method
   const data = await request.formData()
 
-  let url = `http://localhost:3000/${data.get('select')}-comments`
+  let url = `https://shrub-terrific-beginner.glitch.me/${data.get(
+    'select'
+  )}-comments`
   console.log(url)
   const list = await fetch(url)
   const index = await list.json()

@@ -9,24 +9,28 @@
   justify-content: center;
   flex-direction: column;
   padding: 0 50px;
-  text-align: center;
+  text-align: left;
   border-left: solid #000000 1.5px;
   border-right: solid #000000 1.5px;
-  width: 50%;
+  width: 40%;
 }
 
 .contents {
   background-color: #ffffff;
-  border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
+  border-bottom: 1px solid black;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  padding: 6px 15px;
+  margin-right: 40%;
+  margin-bottom: 3%;
 }
 
 .input {
   background-color: lightgray;
   padding: 12px 15px;
   margin: 8px 0;
-  width: 80%;
+  width: 70%;
   border: #000000;
 }
 

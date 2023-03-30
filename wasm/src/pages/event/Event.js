@@ -27,7 +27,9 @@ function EventPage() {
 export default EventPage
 
 async function loadEvent() {
-  const response = await fetch('http://localhost:3000/event')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/event'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -36,7 +38,9 @@ async function loadEvent() {
 }
 
 async function loadEventComment() {
-  const response = await fetch('http://localhost:3000/event-comments')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/event-comments'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()

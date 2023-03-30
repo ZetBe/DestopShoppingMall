@@ -25,7 +25,9 @@ function ForeignPage() {
 }
 
 async function loadForeign() {
-  const response = await fetch('http://localhost:3000/foreign')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/foreign'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()
@@ -34,7 +36,9 @@ async function loadForeign() {
 }
 
 async function loadForeignComment() {
-  const response = await fetch('http://localhost:3000/foreign-comments')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/foreign-comments'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()

@@ -15,7 +15,9 @@ function LoginPage() {
 export default LoginPage
 
 async function loadLogin() {
-  const response = await fetch('http://localhost:3000/login')
+  const response = await fetch(
+    'https://shrub-terrific-beginner.glitch.me/login'
+  )
   if (!response.ok) {
   } else {
     const resData = await response.json()

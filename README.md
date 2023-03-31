@@ -51,7 +51,7 @@
 # Mechanism
 <img width="1280" alt="image" src="https://user-images.githubusercontent.com/90635746/229140817-4031a64a-7207-4807-9fae-b76651a6bef7.png">
 
-구현한 기능들은 게시글 CRUD, 댓글 작성, Login이 있으며, 각각 어떻게 구현했는지 이야기 해보겠다.
+구현한 기능들은 게시글 CRUD, 댓글 작성, Login, 에러 처리가 있으며, 각각 어떻게 구현했는지 이야기 해보겠다.
 
 <br/>
 <br/>
@@ -206,6 +206,15 @@
 
 
 (나중에 토큰도 만들어 보며 일정 시간 지났을 경우 로그아웃되도록 해볼 예정이다.)
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+## 404에러
+<img width="480" alt="image" src="https://user-images.githubusercontent.com/90635746/229184402-86b9c2e8-2af5-4280-b257-ccaecc31f6b5.png">
+만약 설정한 라우트와 전혀 다른 라우트를 작성할 경우 404 에러를 발생시킨다. 그리고 기본 화면으로 돌아가게끔 링크를 준다.
 
 <br/>
 <br/>

@@ -44,9 +44,40 @@
     딱히 장소에 구애받지 않고 개발했다.
   </li>
 </ul>
+
 <br/>
 <br/>
 <br/>
+
+### 먼저 시현 영상을 보는 것을 추천합니다.
+
+
+
+https://user-images.githubusercontent.com/90635746/229185337-5c7ad323-34e1-4c6f-ae11-8508624997e6.mp4
+
+로그인+회원가입
+
+<br/>
+<br/>
+
+https://user-images.githubusercontent.com/90635746/229185363-c34c8435-ec61-4c5b-9045-fd2bf9b74ce6.mp4
+
+게시글 
+
+<br/>
+<br/>
+
+https://user-images.githubusercontent.com/90635746/229185384-1d82900e-fd56-4c58-99ca-3c2e05e9e8ae.mp4
+
+댓글
+
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+
 
 # Mechanism
 <img width="1280" alt="image" src="https://user-images.githubusercontent.com/90635746/229140817-4031a64a-7207-4807-9fae-b76651a6bef7.png">

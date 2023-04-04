@@ -8,6 +8,7 @@ function CommunityDetail({ post, params }) {
   const state = useSelector((state) => state.account)
   const id = params.id
   const select = post.select
+
   const deleteHandler = async () => {
     const proceed = window.confirm('진짜 지울거임?')
 

@@ -12,3 +12,16 @@ footer {
 .timer {
   text-align: center;
 }
+
+.header {
+  font-size: 40px;
+  color: grey;
+}
+
+.div {
+  height: 10%;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  text-align: center;
+  color: grey;
+}

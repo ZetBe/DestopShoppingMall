@@ -1,11 +1,14 @@
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, useNavigation } from 'react-router-dom'
 import MainNavigation from '../../components/MainNavigation'
 import classes from '../page.module.css'
+import Loading from '../../components/Loading'
 function RootLayout() {
+  const navigation = useNavigation()
   return (
     <>
       <MainNavigation />
       <main>
+        {navigation.state === 'loading' && <Loading />}
         <Outlet></Outlet>
         <div className={classes.bottom}></div>
         <footer>

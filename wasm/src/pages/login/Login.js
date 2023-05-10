@@ -4,11 +4,13 @@ import { Suspense } from 'react'
 function LoginPage() {
   const { accounts } = useRouteLoaderData('login')
   return (
-    <Suspense>
-      <Await resolve={accounts}>
-        {(loadAccounts) => <SignIn accounts={loadAccounts} />}
-      </Await>
-    </Suspense>
+    <>
+      <Suspense>
+        <Await resolve={accounts}>
+          {(loadAccounts) => <SignIn accounts={loadAccounts} />}
+        </Await>
+      </Suspense>
+    </>
   )
 }
 

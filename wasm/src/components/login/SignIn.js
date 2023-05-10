@@ -33,36 +33,38 @@ function SignIn({ accounts }) {
     return navigate('/login')
   }
   return (
-    <Form className={classes.form}>
-      <label htmlFor="id">id</label>
-      <input
-        id="id"
-        type="text"
-        name="id"
-        value={id}
-        className={classes.inputIn}
-        onChange={(e) => setId(e.target.value)}
-        required
-      ></input>
-      <label htmlFor="password">비번</label>
-      <input
-        id="password"
-        type="password"
-        value={password}
-        className={classes.inputIn}
-        onChange={(e) => setPassword(e.target.value)}
-        name="password"
-        required
-      ></input>
-      <br></br>
-      <button onClick={loginHandler}>
-        <Link to="/">로그인</Link>
-      </button>
+    <>
+      <Form className={classes.form}>
+        <label htmlFor="id">id</label>
+        <input
+          id="id"
+          type="text"
+          name="id"
+          value={id}
+          className={classes.inputIn}
+          onChange={(e) => setId(e.target.value)}
+          required
+        ></input>
+        <label htmlFor="password">비번</label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          className={classes.inputIn}
+          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          required
+        ></input>
+        <br></br>
+        <button onClick={loginHandler}>
+          <Link to="/">로그인</Link>
+        </button>
 
-      <Link to="/login/register">
-        <button>회원가입</button>
-      </Link>
-    </Form>
+        <Link to="/login/register">
+          <button>회원가입</button>
+        </Link>
+      </Form>
+    </>
   )
 }
 export default SignIn

@@ -15,7 +15,7 @@ function CommunityList({ posts, commentAmount }) {
           </tr>
         </thead>
         <tbody>
-          {posts.map((post, index) => (
+          {posts.reverse.map((post, index) => (
             <tr key={post.id}>
               <td>{post.id}</td>
               <td>{post.writer}</td>

@@ -2,7 +2,7 @@ import { useLocation, useRouteLoaderData } from 'react-router-dom'
 import PostForm from '../components/PostForm'
 function EditPage() {
   const location = useLocation()
-  const { post } = useRouteLoaderData(`${location.state.select}-detail`)
+  const post = useRouteLoaderData(`${location.state.select}-detail`)
 
   return (
     <>

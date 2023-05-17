@@ -9,7 +9,7 @@ function CommunityComments({ comments, params, select }) {
     <div className={classes.comment}>
       {state.login && (
         <>
-          <Form method="POST">
+          <Form method="post">
             게시글 아이디
             <input
               id="id"
@@ -42,7 +42,6 @@ function CommunityComments({ comments, params, select }) {
                 id="contents"
                 className={classes.input}
                 name="contents"
-                rows="5"
                 required
               />
               <button>제출</button>

@@ -2,9 +2,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import classes from './CommunityDetail.module.css'
+import { RootState } from '../../store'
 function CommunityDetail({ post, params }) {
   const navigate = useNavigate()
-  const state = useSelector((state) => state.account)
+  const account = useSelector((state: RootState) => state.account)
   const id = params.id
   const select = post.select
 
@@ -27,7 +28,7 @@ function CommunityDetail({ post, params }) {
         <time className={classes.time}>{post.date}</time>
         <div className={classes.contents}>{post.contents}</div>
       </article>
-      {state.username === post.writer && (
+      {account.username === post.writer && (
         <main className={classes.main}>
           <button onClick={deleteHandler}>삭제</button>
           <Link to="edit" state={{ select: post.select }}>

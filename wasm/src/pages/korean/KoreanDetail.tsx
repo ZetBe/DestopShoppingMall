@@ -4,25 +4,41 @@ import CommunityDetail from '../../components/community/CommunityDetail'
 import CommunityComments from '../../components/community/CommunityComments'
 
 function KoreanDetailPage() {
-  let post = {
+  type Post = {
+    id: number
+    select: string
+    title: string
+    writer: string
+    date: string
+    contents: string
+  }
+  type Comment = {
+    id: number
+    commentId: number
+    writer: string
+    date: string
+    contents: string
+  }
 
+  const { post, comments } = useRouteLoaderData('korean-detail') as {
+    post: Post
+    comments: Comment[]
   }
-  let comments = {
-    
-  }
-  { post, comments } = useRouteLoaderData('korean-detail')
+
+  const myPost: Post = post
+  const myComments: Comment[] = comments
   const params = useParams()
   return (
     <>
       <Suspense>
-        <Await resolve={post}>
+        <Await resolve={myPost}>
           {(loadedPost) => (
             <CommunityDetail post={loadedPost} params={params} />
           )}
         </Await>
       </Suspense>
       <Suspense>
-        <Await resolve={comments}>
+        <Await resolve={myComments}>
           {(loadedComments) => (
             <CommunityComments
               comments={loadedComments}
@@ -38,7 +54,7 @@ function KoreanDetailPage() {
 
 export default KoreanDetailPage
 
-async function loadKoreanDetail(id) {
+async function loadKoreanDetail(id: number) {
   const response = await fetch(
     'https://shrub-terrific-beginner.glitch.me/korean/' + id
   )
@@ -49,7 +65,7 @@ async function loadKoreanDetail(id) {
   }
 }
 
-async function loadKoreanComment(id) {
+async function loadKoreanComment(id: string) {
   const response = await fetch(
     'https://shrub-terrific-beginner.glitch.me/korean-comments'
   )

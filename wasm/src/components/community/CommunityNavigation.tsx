@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import classes from '../Navigation.module.css'
+import { RootState } from '../../store'
 function CommunityNavigation() {
-  const state = useSelector((state) => state.account)
+  const state = useSelector((state: RootState) => state.account)
   return (
     <header>
       <nav>

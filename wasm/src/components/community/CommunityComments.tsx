@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux'
 import { Form, json, redirect } from 'react-router-dom'
 import classes from './CommunityComments.module.css'
+import { RootState } from '../../store'
 
 function CommunityComments({ comments, params, select }) {
-  const state = useSelector((state) => state.account)
-  console.log(params.id)
+  const account = useSelector((state: RootState) => state.account)
+  const reverseComments = comments.slice().reverse()
   return (
     <div className={classes.comment}>
-      {state.login && (
+      {account.login && (
         <>
           <Form method="post">
             게시글 아이디
@@ -33,7 +34,7 @@ function CommunityComments({ comments, params, select }) {
               id="name"
               name="name"
               className={classes.contents}
-              value={state.username}
+              value={account.username}
               readOnly
             ></input>
             <p>
@@ -52,7 +53,7 @@ function CommunityComments({ comments, params, select }) {
         </>
       )}
       <ul>
-        {comments.map((comment) => (
+        {reverseComments.map((comment) => (
           <li key={comment.id}>
             <b>
               {comment.id}

@@ -3,19 +3,37 @@ import { Await, defer, useRouteLoaderData } from 'react-router-dom'
 import CommunityList from '../../components/community/CommunityList'
 
 function KoreanPage() {
-  const data = useRouteLoaderData('korean')
+  type Post = {
+    id: number
+    select: string
+    title: string
+    writer: string
+    date: string
+    contents: string
+  }
+  type Comment = {
+    id: number
+    commentId: number
+    writer: string
+    date: string
+    contents: string
+  }
+  const { posts, comments } = useRouteLoaderData('korean') as {
+    posts: Post[]
+    comments: Comment[]
+  }
   const commentAmount = []
-  for (let i = 0; i < data.posts.length; i++) {
+  for (let i = 0; i < posts.length; i++) {
     commentAmount.push(0)
-    for (let j = 0; j < data.comments.length; j++) {
-      if (parseInt(data.comments[j].commentId) === parseInt(data.posts[i].id)) {
+    for (let j = 0; j < comments.length; j++) {
+      if (comments[j].commentId === posts[i].id) {
         commentAmount[i]++
       }
     }
   }
   return (
     <Suspense>
-      <Await resolve={data.posts}>
+      <Await resolve={posts}>
         {(loadData) => (
           <CommunityList posts={loadData} commentAmount={commentAmount} />
         )}

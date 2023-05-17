@@ -1,15 +1,17 @@
 import { NavLink } from 'react-router-dom'
 import classes from './Navigation.module.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { accountActions } from '../store/account-slice'
+import { updateAccount } from '../store/account-slice'
+import { RootState } from '../store'
+
 function MainNavigation() {
   //맨 위에 고정적으로 달아놓는 부분
   const dispatch = useDispatch()
-  const state = useSelector((state) => state)
-  const login = state.account.login
-  const logoutHandler = (event) => {
+  const account = useSelector((state: RootState) => state.account)
+  const login = account.login
+  const logoutHandler = (event, login) => {
     event.preventDefault()
-    dispatch(accountActions.logout(login))
+    dispatch(updateAccount.logout(login))
   }
   return (
     <>
@@ -56,7 +58,7 @@ function MainNavigation() {
                   className={({ isActive }) =>
                     isActive ? classes.active : undefined
                   }
-                  onClick={logoutHandler}
+                  onClick={(event) => logoutHandler(event, login)}
                 >
                   로그아웃
                 </NavLink>

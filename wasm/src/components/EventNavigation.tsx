@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import classes from './Navigation.module.css'
+import { RootState } from '../store'
 
 function EventNavigation() {
-  const state = useSelector((state) => state.account)
+  const state = useSelector((state: RootState) => state.account)
   return (
     <header>
       <nav>

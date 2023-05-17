@@ -32,7 +32,7 @@ function SignUp({ accounts }) {
   }
 
   return (
-    <Form method="POST" className={classes.form}>
+    <Form method="post" className={classes.form}>
       <div>
         <label htmlFor="name">이름을 입력해주세요</label>
         <input

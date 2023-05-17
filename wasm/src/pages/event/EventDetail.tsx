@@ -3,7 +3,25 @@ import { Await, defer, useParams, useRouteLoaderData } from 'react-router-dom'
 import CommunityDetail from '../../components/community/CommunityDetail'
 import CommunityComments from '../../components/community/CommunityComments'
 function EventDetailPage() {
-  const { post, comments } = useRouteLoaderData('event-detail')
+  type Post = {
+    id: number
+    select: string
+    title: string
+    writer: string
+    date: string
+    contents: string
+  }
+  type Comment = {
+    id: number
+    commentId: number
+    writer: string
+    date: string
+    contents: string
+  }
+  const { post, comments } = useRouteLoaderData('event-detail') as {
+    post: Post
+    comments: Comment[]
+  }
   const params = useParams()
   return (
     <>

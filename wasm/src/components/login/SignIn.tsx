@@ -1,32 +1,35 @@
 import { useState } from 'react'
 import { Form, Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { accountActions } from '../../store/account-slice'
+import { updateAccount } from '../../store/account-slice'
 import classes from './Login.module.css'
+import { RootState } from '../../store'
 
 function SignIn({ accounts }) {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const state = useSelector((state) => state.account)
+  const state = useSelector((state: RootState) => state.account)
 
   const loginHandler = (event) => {
     event.preventDefault()
     for (let i = 0; i < accounts.length; i++) {
       if (accounts[i].id === id && accounts[i].password === password) {
-        dispatch(accountActions.login(accounts[i].username))
+        dispatch(updateAccount.login(accounts[i].username))
         return window.alert(`${accounts[i].username}님 로그인했습니다.`)
       }
     }
-    dispatch(accountActions.failLogin(state.failCount))
+
+    dispatch(updateAccount.failLogin(state))
+
     window.alert(
       `로그인에 실패하셨습니다. \n5번의 기회 중 ${
         state.failCount + 1
       }번 사용했습니다.`
     )
     if (state.failCount + 1 >= 5) {
-      dispatch(accountActions.reLogin(state.failCount))
+      dispatch(updateAccount.reLogin(state))
       window.alert('5회이상 로그인에 실패하여 회원가입창으로 이동합니다.')
       return navigate('./register')
     }

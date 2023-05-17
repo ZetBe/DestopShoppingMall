@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import classes from './CommunityList.module.css'
 function CommunityList({ posts, commentAmount }) {
+  const reversePosts = posts.slice().reverse()
+  const reverseCommentAmount = commentAmount.slice().reverse()
+
   return (
     <div>
       <h1 style={{ marginRight: '60%' }}>목록</h1>
@@ -15,7 +18,7 @@ function CommunityList({ posts, commentAmount }) {
           </tr>
         </thead>
         <tbody>
-          {posts.reverse.map((post, index) => (
+          {reversePosts.map((post, index) => (
             <tr key={post.id}>
               <td>{post.id}</td>
               <td>{post.writer}</td>
@@ -24,7 +27,7 @@ function CommunityList({ posts, commentAmount }) {
                 <NavLink to={`${post.id}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
-              <td>{commentAmount[index]}</td>
+              <td>{reverseCommentAmount[index]}</td>
             </tr>
           ))}
         </tbody>

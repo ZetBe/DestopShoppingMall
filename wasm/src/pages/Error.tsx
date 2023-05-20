@@ -5,7 +5,7 @@ function ErrorPage() {
   return (
     <div className={classes.div}>
       <header className={classes.header}>
-        <b>404</b> 해당 페이지가 존재하지 않습니다.
+        해당 페이지가 존재하지 않습니다.
         <br />
       </header>
       <Link

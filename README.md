@@ -22,7 +22,7 @@
   <li>
   <p></p>
     <h3>어떤 기술들을 사용하는가?</h3>
-    <p>Front: React, Redux-toolkit, Redux-persist, Axios, React-router</p>
+    <p>Front: React, Redux-toolkit, Redux-persist, Axios, React-router, JavaScirpt, TypeScript, CSS</p>
     <p>DUMMY API: json-server</p>
     <p>Browser: Chrome</p>
     <p>Source Control: Git, GitHub Desktop</p>

@@ -8,6 +8,9 @@ function LoginPage() {
     username: string
   }
   const { accounts } = useRouteLoaderData('login') as { accounts: Account[] }
+  async function github() {
+    const user = await fetch('http://localhost:3000/auth/github/callback')
+  }
 
   return (
     <>
@@ -16,6 +19,8 @@ function LoginPage() {
           {(loadAccounts) => <SignIn accounts={loadAccounts} />}
         </Await>
       </Suspense>
+      {github}
+      <a href="http://localhost:3000/auth/github/callback">깃허브</a>
     </>
   )
 }
@@ -33,8 +38,8 @@ async function loadLogin() {
   }
 }
 
-export function loader() {
+export async function loader() {
   return defer({
-    accounts: loadLogin(),
+    accounts: await loadLogin(),
   })
 }

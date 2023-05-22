@@ -8,8 +8,10 @@ function LoginPage() {
     username: string
   }
   const { accounts } = useRouteLoaderData('login') as { accounts: Account[] }
-  async function github() {
+  async function github(event) {
+    event.preventDefault()
     const user = await fetch('http://localhost:3000/auth/github/callback')
+    console.log(user)
   }
 
   return (
@@ -19,8 +21,10 @@ function LoginPage() {
           {(loadAccounts) => <SignIn accounts={loadAccounts} />}
         </Await>
       </Suspense>
-      {github}
-      <a href="http://localhost:3000/auth/github/callback">깃허브</a>
+
+      <a href="https://watercommunity-43dcf.firebaseapp.com/__/auth/handler">
+        깃허브
+      </a>
     </>
   )
 }

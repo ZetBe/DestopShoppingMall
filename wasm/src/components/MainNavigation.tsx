@@ -52,7 +52,7 @@ function MainNavigation() {
               </NavLink>
             </li>
             <li>
-              {login ? (
+              {localStorage.getItem('loginToken') ? (
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
@@ -73,6 +73,7 @@ function MainNavigation() {
                 </NavLink>
               )}
             </li>
+            <li></li>
           </ul>
         </nav>
       </header>

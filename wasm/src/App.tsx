@@ -22,13 +22,11 @@ import EventDetailPage, {
 } from './pages/event/EventDetail'
 import EditPage from './pages/Edit'
 import EventLayout from './pages/event/EventLayout'
-import ErrorPage from './pages/Error'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateAccount } from '../../store/account-slice'
 import classes from './Login.module.css'
 import { RootState } from '../../store'
+import { signInWithPopup, GithubAuthProvider } from 'firebase/auth'
+import { auth } from '../../FirebaseConfig'
 
 function SignIn({ accounts }) {
   const [id, setId] = useState('')
@@ -34,6 +36,31 @@ function SignIn({ accounts }) {
       return navigate('./register')
     }
     return navigate('/login')
+  }
+
+  const [username, setUsername] = useState('')
+
+  const onSocialClick = async (event) => {
+    if (event.target.innerText === 'Github') {
+      let provider = new GithubAuthProvider()
+
+      signInWithPopup(auth, provider)
+        .then((data) => {
+          const credential = GithubAuthProvider.credentialFromResult(data)
+          const token = credential.accessToken
+          const displayname = data.user.displayName
+          console.log(data)
+          localStorage.setItem('loginToken', token)
+          setUsername(displayname)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }
+  if (localStorage.getItem('loginToken') !== null) {
+    window.alert(`${username}님 환영합니다.`)
+    window.location.href = '/'
   }
   return (
     <>
@@ -67,6 +94,8 @@ function SignIn({ accounts }) {
           <button>회원가입</button>
         </Link>
       </Form>
+
+      <button onClick={onSocialClick}>Github</button>
     </>
   )
 }

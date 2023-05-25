@@ -22,6 +22,7 @@ import EventDetailPage, {
 } from './pages/event/EventDetail'
 import EditPage from './pages/Edit'
 import EventLayout from './pages/event/EventLayout'
+import ProfilePage from './pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
       },
       {
         path: 'login',

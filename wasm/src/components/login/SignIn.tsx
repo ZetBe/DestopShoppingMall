@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateAccount } from '../../store/account-slice'
 import classes from './Login.module.css'
 import { RootState } from '../../store'
-import { signInWithPopup, GithubAuthProvider } from 'firebase/auth'
+import {
+  signInWithPopup,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+} from 'firebase/auth'
 import { auth } from '../../FirebaseConfig'
 
 function SignIn({ accounts }) {
@@ -52,16 +56,36 @@ function SignIn({ accounts }) {
           console.log(data)
           localStorage.setItem('loginToken', token)
           setUsername(displayname)
+
+          if (localStorage.getItem('loginToken') !== null) {
+            window.alert(`${username}님 환영합니다.`)
+            navigate('/profile')
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else if (event.target.innerText === 'Google') {
+      let provider = new GoogleAuthProvider()
+      signInWithPopup(auth, provider)
+        .then((data) => {
+          const credential = GoogleAuthProvider.credentialFromResult(data)
+          const token = credential.accessToken
+          const displayname = data.user.displayName
+          console.log(data)
+          localStorage.setItem('loginToken', token)
+          setUsername(displayname)
+          if (localStorage.getItem('loginToken') !== null) {
+            window.alert(`${username}님 환영합니다.`)
+            navigate('/profile')
+          }
         })
         .catch((error) => {
           console.log(error)
         })
     }
   }
-  if (localStorage.getItem('loginToken') !== null) {
-    window.alert(`${username}님 환영합니다.`)
-    window.location.href = '/'
-  }
+
   return (
     <>
       <Form className={classes.form}>
@@ -95,7 +119,12 @@ function SignIn({ accounts }) {
         </Link>
       </Form>
 
-      <button onClick={onSocialClick}>Github</button>
+      <button onClick={onSocialClick} type="button">
+        Github
+      </button>
+      <button onClick={onSocialClick} type="button">
+        Google
+      </button>
     </>
   )
 }

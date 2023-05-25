@@ -76,15 +76,13 @@ function MainNavigation() {
             <li>
               {localStorage.getItem('loginToken') !== null && (
                 <NavLink
-                  to="/"
+                  to="/profile"
                   className={({ isActive }) =>
                     isActive ? classes.active : undefined
                   }
-                  onClick={(event) => logoutHandler(login)}
                 >
                   프로필
                 </NavLink>
-                //제작 중
               )}
             </li>
           </ul>

@@ -1,7 +1,6 @@
 import SignIn from '../../components/login/SignIn'
 import { defer, Await, useRouteLoaderData } from 'react-router-dom'
 import { Suspense } from 'react'
-
 function LoginPage() {
   type Account = {
     id: string
@@ -34,8 +33,8 @@ async function loadLogin() {
   }
 }
 
-export async function loader() {
+export function loader() {
   return defer({
-    accounts: await loadLogin(),
+    accounts: loadLogin(),
   })
 }

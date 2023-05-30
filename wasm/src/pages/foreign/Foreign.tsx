@@ -18,7 +18,7 @@ function ForeignPage() {
     date: string
     contents: string
   }
-  const { posts, comments } = useRouteLoaderData('foreign') as {
+  const { posts, comments } = useRouteLoaderData('foriegn') as {
     posts: Post[]
     comments: Comment[]
   }

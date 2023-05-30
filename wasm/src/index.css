@@ -27,11 +27,12 @@ button {
   width: 10%;
   border: none;
   background-color: #ffffff;
+  font-size: 20px;
 }
 
 button:hover {
   text-decoration: underline;
-  background-color: aquamarine;
+  color: dodgerblue;
 }
 
 article {

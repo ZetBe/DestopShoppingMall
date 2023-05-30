@@ -9,9 +9,9 @@ function MainNavigation() {
   const dispatch = useDispatch()
   const account = useSelector((state: RootState) => state.account)
   const login = account.login
-  const logoutHandler = (event, login) => {
-    event.preventDefault()
+  const logoutHandler = (login) => {
     dispatch(updateAccount.logout(login))
+    localStorage.removeItem('loginToken')
   }
   return (
     <>
@@ -52,13 +52,13 @@ function MainNavigation() {
               </NavLink>
             </li>
             <li>
-              {login ? (
+              {localStorage.getItem('loginToken') !== null ? (
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
                     isActive ? classes.active : undefined
                   }
-                  onClick={(event) => logoutHandler(event, login)}
+                  onClick={(event) => logoutHandler(login)}
                 >
                   로그아웃
                 </NavLink>
@@ -70,6 +70,18 @@ function MainNavigation() {
                   }
                 >
                   로그인
+                </NavLink>
+              )}
+            </li>
+            <li>
+              {localStorage.getItem('loginToken') !== null && (
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  프로필
                 </NavLink>
               )}
             </li>

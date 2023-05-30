@@ -22,13 +22,12 @@ import EventDetailPage, {
 } from './pages/event/EventDetail'
 import EditPage from './pages/Edit'
 import EventLayout from './pages/event/EventLayout'
-import ErrorPage from './pages/Error'
+import ProfilePage from './pages/Profile'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -123,6 +122,10 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
         path: 'login',
         id: 'login',
         loader: loginLoader,
@@ -143,7 +146,11 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>
+  return (
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
+  )
 }
 
 export default App

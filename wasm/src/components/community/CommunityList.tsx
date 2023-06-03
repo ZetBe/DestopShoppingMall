@@ -8,13 +8,16 @@ function CommunityList({ posts, commentAmount }) {
   const reverseCommentAmount = commentAmount.slice().reverse()
   const postLists = Math.ceil(posts.length / 10)
   const nowPosts = []
+  const nowComments = []
   for (let j = (page - 1) * 10; j < (page - 1) * 10 + 10; j++) {
-    if (j < posts.length) nowPosts.push(reversePosts[j])
+    if (j < posts.length) {
+      nowPosts.push(reversePosts[j])
+      nowComments.push(reverseCommentAmount[j])
+    }
   }
   const newPosts = JSON.parse(JSON.stringify(nowPosts))
-
+  const newComments = JSON.parse(JSON.stringify(nowComments))
   const showedPosts = new Array(postLists).fill(0)
-  console.log(newPosts)
   return (
     <div>
       <h1 style={{ marginRight: '60%' }}>목록</h1>
@@ -38,7 +41,7 @@ function CommunityList({ posts, commentAmount }) {
                 <NavLink to={`${post.id}`}>{post.title}</NavLink>
               </td>
               <td>{post.date}</td>
-              <td>{reverseCommentAmount[index]}</td>
+              <td>{newComments[index]}</td>
             </tr>
           ))}
         </tbody>
@@ -66,19 +69,6 @@ const Button = styled.button`
     background: gray;
     cursor: pointer;
     transform: translateY(-2px);
-  }
-
-  &[disabled] {
-    background: grey;
-    cursor: revert;
-    transform: revert;
-  }
-
-  &[aria-current] {
-    background: deeppink;
-    font-weight: bold;
-    cursor: revert;
-    transform: revert;
   }
 `
 

@@ -12,9 +12,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+        working-directory: wasm
+
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
+        working-directory: wasm
+
       - name: Install Dependencies
         run: npm ci
         working-directory: wasm
@@ -23,6 +27,7 @@ jobs:
         run: npm run build
         working-directory: wasm
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        working-directory: wasm
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERCOMMUNITY_43DCF }}'

@@ -1,0 +1,42 @@
+[debug] [2023-09-19T13:31:39.411Z] ----------------------------------------------------------------------
+[debug] [2023-09-19T13:31:39.416Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\seohe\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-09-19T13:31:39.417Z] CLI Version:   12.5.4
+[debug] [2023-09-19T13:31:39.418Z] Platform:      win32
+[debug] [2023-09-19T13:31:39.419Z] Node Version:  v18.14.0
+[debug] [2023-09-19T13:31:39.421Z] Time:          Tue Sep 19 2023 22:31:39 GMT+0900 (대한민국 표준시)
+[debug] [2023-09-19T13:31:39.422Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-19T13:31:39.451Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-19T13:31:39.453Z] > authorizing via signed-in user (seoheewon123@hufs.ac.kr)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\seohe\OneDrive\문서\GitHub\WaterCommunity
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-09-19T13:32:07.425Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-09-19T13:32:08.659Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-09-19T13:32:08.660Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2023-09-19T13:32:08.660Z] Found more than 100 projects, selecting via prompt
+[debug] [2023-09-19T13:32:10.770Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/w [none]
+[debug] [2023-09-19T13:32:11.437Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/w 403
+[debug] [2023-09-19T13:32:11.437Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/w {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2023-09-19T13:32:11.439Z] HTTP Error: 403, The caller does not have permission
+[debug] [2023-09-19T13:32:11.666Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (C:\Users\seohe\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\seohe\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project w. Please make sure the project exists and your account has permission to access it.

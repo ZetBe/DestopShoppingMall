@@ -16,7 +16,7 @@ jobs:
           node-version: '16'
       - name: Install Dependencies
         run: |
-          npm intall firebase
+          npm install firebase
           npm ci
         working-directory: wasm
 

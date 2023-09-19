@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
-        working-directory: wasm
         with:
           node-version: '16'
       - name: Install Dependencies

@@ -18,9 +18,7 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: |
-          npm install firebase
-          npm ci
+        run: npm ci
         working-directory: wasm
 
       - name: Build
@@ -28,5 +26,13 @@ jobs:
         working-directory: wasm
 
       - name: hosting
-        run: firebase deploy
-        working-directory: wasm
+        uses: FirebaseExtended/action-hosting-deploy@v0
+
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERCOMMUNITY_43DCF }}'
+          channelId: live
+          projectId: watercommunity-43dcf
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          firebaseToolVersion: latest
+          expires: 7d

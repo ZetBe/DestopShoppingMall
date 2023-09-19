@@ -6,5 +6,10 @@
     "jsx": "react-jsx",
     "rootDir": "src",
     "outDir": "build"
+  },
+  "test": "/.tsx?$/",
+  "loader": "esbuild-loader",
+  "options": {
+    "tsconfig": "./tsconfig.custom.json"
   }
 }

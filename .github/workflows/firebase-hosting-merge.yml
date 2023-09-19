@@ -27,3 +27,4 @@ jobs:
           projectId: watercommunity-43dcf
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        working-directory: wasm

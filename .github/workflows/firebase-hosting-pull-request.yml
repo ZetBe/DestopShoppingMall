@@ -10,7 +10,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-        working-directory: wasm
 
       - uses: actions/setup-node@v3
         working-directory: wasm

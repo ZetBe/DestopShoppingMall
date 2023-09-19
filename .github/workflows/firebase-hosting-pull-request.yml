@@ -23,8 +23,7 @@ jobs:
         working-directory: wasm
 
       - name: hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        run: cd wasm
+        uses: FirebaseExtended/action-hosting-deploy@v0 && cd wasm
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERCOMMUNITY_43DCF }}'

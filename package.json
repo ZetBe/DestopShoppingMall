@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "webpack-bundle-analyzer": "^4.9.1"
+  },
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "react-scripts": "^5.0.1"
+  }
+}

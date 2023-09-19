@@ -15,7 +15,9 @@ jobs:
         with:
           node-version: '16'
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          npm intall firebase
+          npm ci
         working-directory: wasm
 
       - name: Build

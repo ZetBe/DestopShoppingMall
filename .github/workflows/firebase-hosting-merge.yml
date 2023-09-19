@@ -27,6 +27,7 @@ jobs:
 
       - name: hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
+        run: cd wasm
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WATERCOMMUNITY_43DCF }}'
@@ -35,4 +36,3 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           firebaseToolVersion: latest
           expires: 7d
-        working-directory: wasm

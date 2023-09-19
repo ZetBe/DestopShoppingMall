@@ -1,9 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import classes from './CommunityList.module.css'
-import { useState } from 'react'
-import styled from 'styled-components'
 function CommunityList({ posts, commentAmount }) {
-  const [page, setPage] = useState(1)
   const reversePosts = posts.slice().reverse()
   const reverseCommentAmount = commentAmount.slice().reverse()
   const postLists = Math.ceil(posts.length / 10)
@@ -32,7 +29,7 @@ function CommunityList({ posts, commentAmount }) {
           </tr>
         </thead>
         <tbody>
-          {newPosts.map((post, index) => (
+          {reversePosts.map((post, index) => (
             <tr key={post.id}>
               <td>{post.id}</td>
               <td>{post.writer}</td>
@@ -46,11 +43,6 @@ function CommunityList({ posts, commentAmount }) {
           ))}
         </tbody>
       </table>
-      {showedPosts.map((item, index) => (
-        <Button key={index + 1} onClick={() => setPage(index + 1)}>
-          {index + 1}
-        </Button>
-      ))}
     </div>
   )
 }

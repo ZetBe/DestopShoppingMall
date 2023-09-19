@@ -34,5 +34,5 @@ jobs:
           channelId: live
           projectId: watercommunity-43dcf
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          firebaseToolVersion: latest
+          firebaseToolsVersion: latest
           expires: 7d

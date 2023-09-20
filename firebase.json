@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./public",
+    "public": "WaterCommunity/wasm/public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }

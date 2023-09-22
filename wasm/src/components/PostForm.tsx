@@ -7,7 +7,7 @@ import {
   redirect,
 } from 'react-router-dom'
 import classes from './PostForm.module.css'
-import { RootState } from '../store'
+import { RootState } from '../store/indexStore'
 
 function PostForm({ method, post }) {
   const navigate = useNavigate()

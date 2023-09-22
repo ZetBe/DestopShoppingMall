@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import classes from './CommunityDetail.module.css'
-import { RootState } from '../../store'
+import { RootState } from '../../store/indexStore'
 function CommunityDetail({ post, params }) {
   const navigate = useNavigate()
   const account = useSelector((state: RootState) => state.account)

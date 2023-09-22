@@ -3,7 +3,7 @@ import { Form, Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateAccount } from '../../store/account-slice'
 import classes from './Login.module.css'
-import { RootState } from '../../store'
+import { RootState } from '../../store/indexStore'
 import {
   signInWithPopup,
   GithubAuthProvider,

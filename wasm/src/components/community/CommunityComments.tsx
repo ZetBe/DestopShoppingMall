@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { Form, json, redirect } from 'react-router-dom'
 import classes from './CommunityComments.module.css'
-import { RootState } from '../../store'
+import { RootState } from '../../store/indexStore'
 
 function CommunityComments({ comments, params, select }) {
   const account = useSelector((state: RootState) => state.account)

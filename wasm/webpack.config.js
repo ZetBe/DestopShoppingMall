@@ -1,22 +1,46 @@
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
-module.exports = {
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasurePlugin()
+const path = require('path')
+module.exports = smp.wrap({
+  mode: 'development',
+  devtool: 'inline-source-map',
+  output: {
+    filename: 'webpack.bundle.js',
+  },
+  resolve: {
+    extensions: ['.tsx', '.js'],
+    alias: {
+      browser: path.resolve(__dirname, 'src/index.tsx'),
+    },
+  },
   module: {
     rules: [
-      // Use esbuild to compile JavaScript & TypeScript
       {
-        // Match `.js`, `.jsx`, `.ts` or `.tsx` files
-        test: /\.[jt]sx?$/,
+        test: /\.(sa|sc|c)ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [],
+              },
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: [/\.tsx?$/],
         loader: 'esbuild-loader',
+        include: path.resolve(__dirname, './src/index.tsx'),
+        exclude: /node_modules/,
         options: {
-          // JavaScript version to compile to
-          target: 'es2015',
+          loader: 'tsx',
+          target: 'es2020',
         },
       },
-
-      // Other rules...
     ],
   },
-  plugins: [new BundleAnalyzerPlugin()],
-}
+})

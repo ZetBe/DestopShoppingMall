@@ -3,7 +3,7 @@
     "target": "es5",
     "module": "ESNext",
     "moduleResolution": "node",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "rootDir": "src",
     "outDir": "build"
   },

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import classes from './Navigation.module.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateAccount } from '../store/account-slice'
-import { RootState } from '../store'
+import { RootState } from '../store/indexStore'
 
 function MainNavigation() {
   //맨 위에 고정적으로 달아놓는 부분
